@@ -1,0 +1,45 @@
+<div id="NewGameContainer">
+  <div class="row">
+      <div class="col-6 offset-3 border rounded p-4">
+        <h1 class="text-primary">WELCOME TO ANGULAR MINESWEEPER!</h1>
+        <h2 class="text-info mt-4">Select your preferred difficulty:</h2>
+        <div id="RadioContainer" class="flex-column mt-3 ml-4">
+            <div class="radio">
+                <label>
+                    <input type="radio"
+                           [checked]="Difficulty == 'Easy'"
+                           (click)="UpdateDifficulty('Easy')"
+                           name="ProfitCode">
+                    <span>Easy</span>
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                    <input type="radio"
+                           [checked]="Difficulty == 'Intermediate'"
+                           (click)="UpdateDifficulty('Intermediate')"
+                           name="ProfitCode">
+                    <span>Intermediate</span>
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                    <input type="radio"
+                           [checked]="Difficulty == 'Expert'"
+                           (click)="UpdateDifficulty('Expert')"
+                           name="ProfitCode">
+                    <span>Expert</span>
+                </label>
+              </div>
+        </div>
+        <div class="d-flex flex-row justify-content-center">
+
+
+        </div>
+
+        <button routerLink="/Gameplay/{{Difficulty}}" class="btn btn-primary mt-3">NEW GAME!</button>
+
+      </div>
+  </div>
+
+</div>
