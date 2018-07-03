@@ -5,12 +5,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NewGameComponent } from './new-game/new-game.component';
 import { BoardComponent } from './board/board.component';
+import { GridComponent } from './grid/grid.component';
+import { CellComponent } from './cell/cell.component';
+import { CounterComponent } from './counter/counter.component';
+import { TimerComponent } from './timer/timer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NewGameComponent,
-    BoardComponent
+    BoardComponent,
+    GridComponent,
+    CellComponent,
+    CounterComponent,
+    TimerComponent
   ],
   imports: [
     BrowserModule,

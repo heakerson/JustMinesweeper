@@ -1,0 +1,16 @@
+.cell-container{
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    margin: 2px;
+    border-radius: 5px;
+    border: 2px solid #007bff;
+}
+
+.cell-container:hover{
+    border: 2px solid fuchsia;
+}
+
+.is-mine{
+    background-color: red !important;
+}

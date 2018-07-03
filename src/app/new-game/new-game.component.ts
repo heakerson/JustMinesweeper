@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DifficultyType } from './DifficultyType';
 
 @Component({
   selector: 'app-new-game',
@@ -7,21 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewGameComponent implements OnInit {
 
-  Difficulty : Difficulty = Difficulty.Easy;
+  public Difficulty : DifficultyType = DifficultyType.Easy;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  UpdateDifficulty(difficulty : Difficulty){
+  UpdateDifficulty(difficulty : DifficultyType){
     this.Difficulty = difficulty;
   }
-}
-
-
-export enum Difficulty {
-  Easy = "Easy",
-  Intermediate = "Intermediate",
-  Expert = "Expert"
 }

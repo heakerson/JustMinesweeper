@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Difficulty } from '../new-game/new-game.component';
+import { DifficultyType } from '../new-game/DifficultyType';
 import { ActivatedRoute } from '@angular/router';
+import { BoardModel } from './BoardModel';
 
 @Component({
   selector: 'app-board',
@@ -9,13 +10,17 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BoardComponent implements OnInit {
 
-  @Input() Difficulty : Difficulty;
+  Model : BoardModel;
 
   constructor(private route : ActivatedRoute) { }
 
   ngOnInit() {
+
     this.route.paramMap.subscribe(params => {
-      this.Difficulty = <Difficulty>params.get('difficulty');
+      let difficulty : DifficultyType = <DifficultyType>params.get('difficulty');
+        //console.log("1. "+difficulty);
+      this.Model = new BoardModel(difficulty);
+        //console.log("2. " + this.Model.Difficulty.Type);
     });
 
     //this.Difficulty = this.route.snapshot.params.difficulty;

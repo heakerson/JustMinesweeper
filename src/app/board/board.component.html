@@ -1,2 +1,6 @@
-<div>{{Difficulty}}</div>
-<button routerLink="/New" class="btn btn-primary">START NEW GAME</button>
+<div class="d-flex flex-row justify-content-center">
+  <div>
+    <app-grid [Model]="Model.Grid"></app-grid>
+    <button routerLink="/New" class="btn btn-primary mt-3">BACK TO MENU</button>
+  </div>
+</div>

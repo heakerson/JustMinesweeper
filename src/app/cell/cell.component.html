@@ -1,0 +1,11 @@
+<div [class.is-mine]="Model.IsMine" class="cell-container bg-primary text-light" (click)="ClickCell()">
+  {{Model.Contents}}
+  <!-- <div *ngIf="Model.IsSelected">
+    <div *ngIf="Model.IsMine; else DisplayCount">
+      X
+    </div>
+    <ng-template #DisplayCount>
+      {{Model.Count}}
+    </ng-template>
+  </div> -->
+</div>
