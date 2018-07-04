@@ -6,7 +6,6 @@ export class CellModel{
     public IsSelected : boolean = false;
     public IsMine : boolean = false;
     public IsFlagged : boolean = false;
-    public IsInitialCell : boolean = false;
     public Row : number = -1;
     public Column : number = -1;
     public Count : number = 0;
@@ -48,12 +47,11 @@ export class CellModel{
     public ClickCell(){
 
         if(this.IsClickable()){
+
             this.IsSelected = true;
             
             if(this.Grid.Board.GameStatus == GameStatus.Reset){
                 this.Grid.GenerateMines(this.Grid.Board.Difficulty.MineCount, this.Row, this.Column);
-                this.Grid.MinesGenerated = true;
-                this.IsInitialCell = true;
                 this.Grid.Board.Start();
             }
 
@@ -64,7 +62,6 @@ export class CellModel{
             }
             else{
                 if(this.Count == 0){
-    
                     for(let cell of this.AdjacentCells){
                         if(!cell.IsMine && !cell.IsSelected){
                             cell.ClickCell();
@@ -122,7 +119,6 @@ export class CellModel{
         this.IsSelected = false;
         this.IsMine = false;
         this.IsFlagged = false;
-        this.IsInitialCell = false;
         this.Count = 0;
     }
 }

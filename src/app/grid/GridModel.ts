@@ -8,7 +8,6 @@ export class GridModel{
     public Board : BoardModel;
     public Rows : number = 0;
     public Columns : number = 0;
-    public MinesGenerated : boolean = false;
     public MinesLocated : number = 0;
 
     constructor(rows : number, columns : number, board : BoardModel){
