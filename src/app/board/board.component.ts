@@ -18,12 +18,9 @@ export class BoardComponent implements OnInit {
 
     this.route.paramMap.subscribe(params => {
       let difficulty : DifficultyType = <DifficultyType>params.get('difficulty');
-        //console.log("1. "+difficulty);
       this.Model = new BoardModel(difficulty);
-        //console.log("2. " + this.Model.Difficulty.Type);
     });
-
-    //this.Difficulty = this.route.snapshot.params.difficulty;
+    
   }
 
 }

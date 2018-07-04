@@ -1,6 +1,9 @@
 <div class="d-flex flex-row justify-content-center">
   <div>
     <app-grid [Model]="Model.Grid"></app-grid>
-    <button routerLink="/New" class="btn btn-primary mt-3">BACK TO MENU</button>
+    <div class="flex-row pt-3">
+      <button (click)="Model.Reset()" class="btn btn-info mr-3">RESTART GAME</button>
+      <button routerLink="/New" class="btn btn-danger">BACK TO MENU</button>
+    </div>
   </div>
 </div>

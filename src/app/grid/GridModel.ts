@@ -93,6 +93,10 @@ export class GridModel{
     }
 
     public Reset(){
-
+        for(let row of this.CellArray){
+            for(let cell of row){
+                cell.Reset();
+            }
+        }
     }
 }

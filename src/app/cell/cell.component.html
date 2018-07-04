@@ -5,7 +5,7 @@
     class="cell-container bg-primary text-center" (contextmenu)="RightClickCell()" (click)="ClickCell()">
 
     <span *ngIf="Model.IsSelected && !Model.IsMine; else icon">
-      {{Model.Contents}}
+      {{Model.Count}}
     </span>
     <ng-template #icon><i class="fas fa-bomb"></i></ng-template>
 

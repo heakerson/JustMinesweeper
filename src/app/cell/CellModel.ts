@@ -10,7 +10,6 @@ export class CellModel{
     public Row : number = -1;
     public Column : number = -1;
     public Count : number = 0;
-    public Contents : string = "-";
     public AdjancentCellLocations : number[][] = [];
     public AdjacentCells : CellModel[] = [];
     private Grid : GridModel;
@@ -64,9 +63,6 @@ export class CellModel{
                 this.Grid.Board.Lose();
             }
             else{
-    
-                this.Contents = this.Count.toString();
-    
                 if(this.Count == 0){
     
                     for(let cell of this.AdjacentCells){
@@ -120,5 +116,13 @@ export class CellModel{
         }
 
         return count;
+    }
+
+    public Reset(){
+        this.IsSelected = false;
+        this.IsMine = false;
+        this.IsFlagged = false;
+        this.IsInitialCell = false;
+        this.Count = 0;
     }
 }
