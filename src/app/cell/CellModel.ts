@@ -2,7 +2,7 @@ import { GridModel } from "../grid/GridModel";
 import { GameStatus } from "../board/GameStatus";
 
 export class CellModel{
-    
+
     public IsSelected : boolean = false;
     public IsMine : boolean = false;
     public IsFlagged : boolean = false;
@@ -82,9 +82,7 @@ export class CellModel{
     public IsClickable() : boolean{
         return !this.IsSelected && 
                 !this.IsFlagged &&
-                this.Grid.Board.GameStatus != GameStatus.Lose &&
-                this.Grid.Board.GameStatus != GameStatus.Win &&
-                this.Grid.Board.GameStatus != GameStatus.Stopped
+                (this.Grid.Board.GameStatus == GameStatus.Reset || this.Grid.Board.GameStatus == GameStatus.Started)
     }
 
     public RightClickCell(){
