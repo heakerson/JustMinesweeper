@@ -19,4 +19,8 @@ export class CellComponent implements OnInit {
     this.Model.ClickCell();
   }
 
+  RightClickCell(){
+    this.Model.RightClickCell();
+  }
+
 }

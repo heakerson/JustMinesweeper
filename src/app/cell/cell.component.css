@@ -1,16 +1,37 @@
 .cell-container{
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     display: inline-block;
     margin: 2px;
     border-radius: 5px;
     border: 2px solid #007bff;
+    color: #007bff;
 }
 
 .cell-container:hover{
     border: 2px solid fuchsia;
+    cursor: pointer;
+}
+
+.is-selected{
+    background-color: fuchsia !important;
+    color:white !important;
+    border: 2px solid fuchsia;
+}
+
+.is-empty{
+    color: fuchsia !important;
 }
 
 .is-mine{
     background-color: red !important;
+    border: 2px solid red;
+}
+
+.is-flagged{
+    color: black;
+}
+
+.is-mine:hover{
+    border: 2px solid red;
 }

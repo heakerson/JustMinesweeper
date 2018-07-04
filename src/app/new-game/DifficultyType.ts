@@ -30,6 +30,7 @@ export class Difficulty {
             case DifficultyType.Expert:
                 this.Rows = 16;
                 this.Columns = 30;
+                this.MineCount = 99;
                 break;
             case DifficultyType.Custom:
                 this.Rows = rows;

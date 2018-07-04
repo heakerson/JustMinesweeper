@@ -1,3 +1,11 @@
 .grid-container{
     
 }
+
+.grid-row{
+    height: 34px !important;
+}
+
+app-cell{
+    display: inline-block;
+}

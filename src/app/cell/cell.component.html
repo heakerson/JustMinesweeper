@@ -1,11 +1,12 @@
-<div [class.is-mine]="Model.IsMine" class="cell-container bg-primary text-light" (click)="ClickCell()">
-  {{Model.Contents}}
-  <!-- <div *ngIf="Model.IsSelected">
-    <div *ngIf="Model.IsMine; else DisplayCount">
-      X
-    </div>
-    <ng-template #DisplayCount>
-      {{Model.Count}}
-    </ng-template>
-  </div> -->
+<div [class.is-mine]="Model.IsMine && Model.IsSelected" 
+    [class.is-selected]="Model.IsSelected"
+    [class.is-empty]="Model.Count == 0 && Model.IsSelected && !Model.IsMine"
+    [class.is-flagged]="Model.IsFlagged"
+    class="cell-container bg-primary text-center" (contextmenu)="RightClickCell()" (click)="ClickCell()">
+
+    <span *ngIf="Model.IsSelected && !Model.IsMine; else icon">
+      {{Model.Contents}}
+    </span>
+    <ng-template #icon><i class="fas fa-bomb"></i></ng-template>
+
 </div>

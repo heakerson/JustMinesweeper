@@ -1,6 +1,6 @@
 <div class="grid-container">
     <div class="d-flex flex-column">
-      <div *ngFor="let row of Model.CellArray" class="flex-row">
+      <div *ngFor="let row of Model.CellArray" class="grid-row">
         <app-cell *ngFor="let cell of row" [Model]="cell"></app-cell>
       </div>
     </div>
