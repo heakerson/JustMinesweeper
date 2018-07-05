@@ -1,10 +1,16 @@
 <div id="CounterContainer" class="p-3 mt-3">
-  <div>
-    FLAGS LEFT: 
-    <span class="font-weight-bold" [class.text-success]="Model.Count > 0 || (Model.Count == 0 && Model.Board.GameStatus == 3)" 
-        [class.text-danger]="Model.Count < 0 || (Model.Count == 0 && Model.Board.GameStatus != 3)">{{Model.Count}}</span>
+  <div class="d-flex flex-row">
+    <div class="mr-3">
+        FLAGS LEFT: 
+    </div>
+    <div class="font-weight-bold ml-auto" 
+        [class.text-success]="Model.Count > 0 || (Model.Count == 0 && Model.Board.GameStatus == 3)" 
+        [class.text-danger]="Model.Count < 0 || (Model.Count == 0 && Model.Board.GameStatus != 3)">{{Model.Count}}</div>
   </div>
-  <div class="">
-    TOTAL MINES: <span class="font-weight-bold">{{Model.Board.Difficulty.MineCount}}</span>
+  <div class="small-text d-flex flex-row">
+    <div>
+        TOTAL MINES: 
+    </div>
+    <span class="font-weight-bold ml-auto">{{Model.Board.Difficulty.MineCount}}</span>
   </div>
 </div>

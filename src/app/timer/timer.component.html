@@ -1,3 +1,8 @@
 <div id="TimerContainer" class="p-3">
-  TIME: <span class="font-weight-bold" [class.done]="Model.Board.GameStatus != 0 && Model.Board.GameStatus != 1">{{Model.Time}}</span>
+  <div class="d-flex flex-row">
+    <div>
+        TIME: 
+    </div>
+    <span class="font-weight-bold ml-auto" [class.done]="Model.Board.GameStatus != 0 && Model.Board.GameStatus != 1">{{Model.Time}}</span>
+  </div>
 </div>
