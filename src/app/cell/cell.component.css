@@ -28,6 +28,10 @@
     border: 2px solid red;
 }
 
+.is-revealed{
+    color: white;
+}
+
 .is-flagged{
     color: black;
 }

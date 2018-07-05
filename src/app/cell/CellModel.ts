@@ -6,6 +6,7 @@ export class CellModel{
     public IsSelected : boolean = false;
     public IsMine : boolean = false;
     public IsFlagged : boolean = false;
+    public IsRevealed : boolean = false;
     public Row : number = -1;
     public Column : number = -1;
     public Count : number = 0;
@@ -92,6 +93,7 @@ export class CellModel{
 
     public GetAdjacentCells() : CellModel[]{
         let adjCells : CellModel[] = [];
+        this.AdjacentCells = [];
         
         for(let location of this.AdjancentCellLocations){
             let cell : CellModel = this.Grid.GetCell(location[0], location[1]);
@@ -115,10 +117,17 @@ export class CellModel{
         return count;
     }
 
+    public RevealMine(){
+        if(this.IsMine && !this.IsSelected){
+            this.IsRevealed = true;
+        }
+    }
+
     public Reset(){
         this.IsSelected = false;
         this.IsMine = false;
         this.IsFlagged = false;
         this.Count = 0;
+        this.IsRevealed = false;
     }
 }

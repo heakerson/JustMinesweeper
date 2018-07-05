@@ -9,6 +9,7 @@ export class GridModel{
     public Rows : number = 0;
     public Columns : number = 0;
     public MinesLocated : number = 0;
+    public MineCells : CellModel[];
 
     constructor(rows : number, columns : number, board : BoardModel){
         this.Board = board;
@@ -38,6 +39,7 @@ export class GridModel{
 
         this.MineCount = mineCount;
         let counter : number = 0;
+        this.MineCells = [];
         
         while(counter < this.MineCount){
 
@@ -48,6 +50,7 @@ export class GridModel{
                 let cell : CellModel = this.GetCell(rowIndex, columnIndex);
                 cell.IsMine = true;
                 counter++;
+                this.MineCells.push(cell);
             }
         }
     }
@@ -96,6 +99,12 @@ export class GridModel{
             for(let cell of row){
                 cell.Reset();
             }
+        }
+    }
+
+    public RevealMines(){
+        for(let cell of this.MineCells){
+            cell.RevealMine();
         }
     }
 }

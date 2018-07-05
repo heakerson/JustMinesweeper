@@ -50,7 +50,7 @@ export class BoardModel{
     public Lose(){
         this.Stop();
         this.GameStatus = GameStatus.Lose;
-        alert('You lose!');
+        this.Grid.RevealMines();
     }
 
     public UpdateLocatedMines(flaggedCell : CellModel){
