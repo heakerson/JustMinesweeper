@@ -12,8 +12,7 @@ export class CellModel{
     public Count : number = 0;
     public AdjancentCellLocations : number[][] = [];
     public AdjacentCells : CellModel[] = [];
-    private Grid : GridModel;
-    // public GameStatus = this.Grid.Board.GameStatus;
+    public Grid : GridModel;
 
     constructor(grid : GridModel, row : number, column : number){
         this.Grid = grid;

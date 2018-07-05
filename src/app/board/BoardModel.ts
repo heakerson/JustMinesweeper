@@ -45,7 +45,6 @@ export class BoardModel{
     public Win(){
         this.Stop();
         this.GameStatus = GameStatus.Win;
-        alert('You win!');
     }
 
     public Lose(){

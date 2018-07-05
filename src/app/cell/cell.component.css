@@ -40,6 +40,11 @@
     border: 2px solid red;
 }
 
+.won{
+    background-color: #00ff43 !important;
+    border: 2px solid #00ff43;
+}
+
 /* .fa-times{
     font-size: 21px;
 } */
