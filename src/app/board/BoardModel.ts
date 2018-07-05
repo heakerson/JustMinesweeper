@@ -19,7 +19,7 @@ export class BoardModel{
     constructor(difficulty : DifficultyType){
         this.Difficulty = new Difficulty(difficulty);
         this.Grid = new GridModel(this.Difficulty.Rows, this.Difficulty.Columns, this);
-        this.Counter = new CounterModel(this.Difficulty.MineCount);
+        this.Counter = new CounterModel(this.Difficulty.MineCount, this);
     }
 
     public Reset(){
@@ -63,10 +63,6 @@ export class BoardModel{
             if(flaggedCell.IsMine){
                 this.MinesLocated++;
             }
-    
-            if(this.MinesLocated == this.Difficulty.MineCount){
-                this.Win();
-            }
         }
         else{
             this.Counter.Incrememnt();
@@ -76,6 +72,18 @@ export class BoardModel{
                 this.MinesLocated--;
             }
         }
+        if(this.MinesLocated == this.Difficulty.MineCount && this.GetFlaggedCount() == this.Difficulty.MineCount){
+            this.Win();
+        }
+    }
 
+    public GetFlaggedCount() : number{
+        let count : number = 0;
+        for(let flag of this.FlaggedCells){
+            if(flag.IsFlagged){
+                count++;
+            }
+        }
+        return count;
     }
 }

@@ -1,7 +1,9 @@
+import { BoardModel } from "../board/BoardModel";
+
 export class CounterModel{
     public Count : number = 0;
 
-    constructor(startingCount : number){
+    constructor(startingCount : number, public Board : BoardModel){
         this.Count = startingCount;
     }
 

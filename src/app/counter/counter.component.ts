@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { CounterModel } from './CounterModel';
 
 @Component({
   selector: 'app-counter',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./counter.component.css']
 })
 export class CounterComponent implements OnInit {
+
+  @Input() Model : CounterModel;
 
   constructor() { }
 
