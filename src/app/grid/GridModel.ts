@@ -103,8 +103,15 @@ export class GridModel{
     }
 
     public RevealMines(){
+
         for(let cell of this.MineCells){
-            cell.RevealMine();
+            cell.RevealMineStatus();
+        }
+
+        for(let cell of this.Board.FlaggedCells){
+            if(!cell.IsMine){
+                cell.RevealMineStatus();
+            }
         }
     }
 }

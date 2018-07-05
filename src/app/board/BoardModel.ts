@@ -14,6 +14,7 @@ export class BoardModel{
     Flags : number = 0;
     MinesLocated : number = 0;
     GameStatus : GameStatus = GameStatus.Reset;
+    FlaggedCells : CellModel[] = [];
 
     constructor(difficulty : DifficultyType){
         this.Difficulty = new Difficulty(difficulty);
@@ -55,15 +56,27 @@ export class BoardModel{
 
     public UpdateLocatedMines(flaggedCell : CellModel){
 
-        this.Counter.Decrement();
-        this.Flags++;
+        if(flaggedCell.IsFlagged){
+            this.FlaggedCells.push(flaggedCell);
+            this.Counter.Decrement();
+            this.Flags++;
+    
+            if(flaggedCell.IsMine){
+                this.MinesLocated++;
+            }
+    
+            if(this.MinesLocated == this.Difficulty.MineCount){
+                this.Win();
+            }
+        }
+        else{
+            this.Counter.Incrememnt();
+            this.Flags--;
 
-        if(flaggedCell.IsMine){
-            this.MinesLocated++;
+            if(flaggedCell.IsMine){
+                this.MinesLocated--;
+            }
         }
 
-        if(this.MinesLocated == this.Difficulty.MineCount){
-            this.Win();
-        }
     }
 }

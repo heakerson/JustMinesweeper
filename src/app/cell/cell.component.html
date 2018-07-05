@@ -8,6 +8,9 @@
     <span *ngIf="Model.IsSelected && !Model.IsMine; else icon">
       {{Model.Count}}
     </span>
-    <ng-template #icon><i class="fas fa-bomb"></i></ng-template>
+    <ng-template #icon>
+      <i [class.d-none]="(Model.IsFlagged && Model.IsRevealed && !Model.IsMine)" class="fas fa-bomb"></i>
+      <i [class.d-none]="!(Model.IsFlagged && Model.IsRevealed && !Model.IsMine)" class="fas fa-times text-danger"></i>
+    </ng-template>
 
 </div>

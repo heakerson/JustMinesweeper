@@ -13,6 +13,7 @@ export class CellModel{
     public AdjancentCellLocations : number[][] = [];
     public AdjacentCells : CellModel[] = [];
     private Grid : GridModel;
+    // public GameStatus = this.Grid.Board.GameStatus;
 
     constructor(grid : GridModel, row : number, column : number){
         this.Grid = grid;
@@ -87,8 +88,9 @@ export class CellModel{
 
         if(!this.IsSelected){
             this.IsFlagged = !this.IsFlagged;
-            this.Grid.UpdateLocatedMines(this);
         }
+
+        this.Grid.UpdateLocatedMines(this);
     }
 
     public GetAdjacentCells() : CellModel[]{
@@ -117,8 +119,11 @@ export class CellModel{
         return count;
     }
 
-    public RevealMine(){
+    public RevealMineStatus(){
         if(this.IsMine && !this.IsSelected){
+            this.IsRevealed = true;
+        }
+        else if(!this.IsMine && this.IsFlagged){
             this.IsRevealed = true;
         }
     }
