@@ -9,7 +9,7 @@ export class BoardModel{
 
     Grid : GridModel;
     Counter : CounterModel;
-    Timer : TimerModel = new TimerModel();
+    Timer : TimerModel = new TimerModel(this);
     Difficulty : Difficulty;
     Flags : number = 0;
     MinesLocated : number = 0;

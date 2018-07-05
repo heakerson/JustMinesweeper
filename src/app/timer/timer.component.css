@@ -1,0 +1,9 @@
+#TimerContainer{
+    border: 3px solid black;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.done{
+    color:blue;
+}

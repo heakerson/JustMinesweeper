@@ -1,3 +1,3 @@
-<p>
-  timer works!
-</p>
+<div id="TimerContainer" class="p-3">
+  TIME: <span class="font-weight-bold" [class.done]="Model.Board.GameStatus != 0 && Model.Board.GameStatus != 1">{{Model.Time}}</span>
+</div>
