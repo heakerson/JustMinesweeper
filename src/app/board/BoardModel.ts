@@ -4,6 +4,7 @@ import { TimerModel } from "../timer/TimerModel";
 import { DifficultyType, Difficulty } from "../new-game/DifficultyType";
 import { CellModel } from "../cell/CellModel";
 import { GameStatus } from "./GameStatus";
+import { StatsModel } from "../stats/StatsModel";
 
 export class BoardModel{
 
@@ -11,21 +12,34 @@ export class BoardModel{
     Counter : CounterModel;
     Timer : TimerModel = new TimerModel(this);
     Difficulty : Difficulty;
+    Stats : StatsModel = new StatsModel();
     Flags : number = 0;
     MinesLocated : number = 0;
     GameStatus : GameStatus = GameStatus.Reset;
     FlaggedCells : CellModel[] = [];
+    StatsLogged : boolean = false;
 
     constructor(difficulty : DifficultyType){
         this.Difficulty = new Difficulty(difficulty);
         this.Grid = new GridModel(this.Difficulty.Rows, this.Difficulty.Columns, this);
         this.Counter = new CounterModel(this.Difficulty.MineCount, this);
+
+        document.addEventListener("contextmenu", function (e) {
+            e.preventDefault();
+        }, false);
     }
 
     public Reset(){
+
+        if(!this.StatsLogged){
+            this.Stats.Update(this, this.Timer, false);
+        }
+
         this.GameStatus = GameStatus.Reset;
         this.Flags = 0;
         this.MinesLocated = 0;
+        this.StatsLogged = false;
+        this.FlaggedCells = [];
 
         this.Timer.Reset();
         this.Counter.Reset(this.Difficulty.MineCount);
@@ -45,36 +59,59 @@ export class BoardModel{
     public Win(){
         this.Stop();
         this.GameStatus = GameStatus.Win;
+        this.Stats.Update(this, this.Timer, true);
     }
 
     public Lose(){
         this.Stop();
         this.GameStatus = GameStatus.Lose;
         this.Grid.RevealMines();
+        this.Stats.Update(this, this.Timer, false);
     }
 
-    public UpdateLocatedMines(flaggedCell : CellModel){
+    public UpdateLocatedMines(cell : CellModel){
 
-        if(flaggedCell.IsFlagged){
-            this.FlaggedCells.push(flaggedCell);
-            this.Counter.Decrement();
-            this.Flags++;
-    
-            if(flaggedCell.IsMine){
+        if(cell.IsFlagged){
+            
+            if(!this.IsInFlaggedList(cell)){
+                this.FlaggedCells.push(cell);
+            }
+
+            if(cell.IsMine){
                 this.MinesLocated++;
             }
+
+            this.Counter.Decrement();
+            this.Flags--;
         }
         else{
-            this.Counter.Incrememnt();
-            this.Flags--;
 
-            if(flaggedCell.IsMine){
+            if(cell.IsMine){
                 this.MinesLocated--;
             }
+
+            this.Counter.Incrememnt();
+            this.Flags++;
         }
+
+        // console.log("cell: " + cell);
+        // console.log("minesLocated: " + this.MinesLocated);
+        // console.log("flagged count: " + this.GetFlaggedCount());
+
         if(this.MinesLocated == this.Difficulty.MineCount && this.GetFlaggedCount() == this.Difficulty.MineCount){
             this.Win();
         }
+    }
+
+    public IsInFlaggedList(cell : CellModel) : boolean{
+
+        for(let aCell of this.FlaggedCells){
+            if(aCell.Id == cell.Id){
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public GetFlaggedCount() : number{

@@ -9,6 +9,7 @@ import { GridComponent } from './grid/grid.component';
 import { CellComponent } from './cell/cell.component';
 import { CounterComponent } from './counter/counter.component';
 import { TimerComponent } from './timer/timer.component';
+import { StatsComponent } from './stats/stats.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { TimerComponent } from './timer/timer.component';
     GridComponent,
     CellComponent,
     CounterComponent,
-    TimerComponent
+    TimerComponent,
+    StatsComponent
   ],
   imports: [
     BrowserModule,

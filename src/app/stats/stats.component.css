@@ -1,0 +1,20 @@
+#StatsContainer{
+    color: fuchsia;
+}
+
+.row-one{
+    background-color: blue;
+}
+
+.row-two{
+    background-color: aqua;
+}
+
+.row-three{
+    background-color: rgb(185, 255, 255);
+}
+
+
+.flex-row div{
+    width:15%;
+}

@@ -1,0 +1,82 @@
+<div id="StatsContainer" class="d-flex flex-column p-4 font-weight-bold">
+  <div class="headings d-flex flex-row justify-content-between p-2 text-dark">
+    <div>
+
+    </div>
+    <div>
+      Won
+    </div>
+    <div>
+      Attempted
+    </div>
+    <div>
+      % Won
+    </div>
+    <div>
+      Best Win Time
+    </div>
+    <div>
+      Average Win Time
+    </div>
+  </div>
+  <div class="row-one d-flex flex-row p-2 justify-content-between">
+    <div class="">
+      Beginner
+    </div>
+    <div class="">
+      {{Model.Beginner.Won}}
+    </div>
+    <div class="">
+      {{Model.Beginner.Attempted}}
+    </div>
+    <div class="">
+      {{Model.Beginner.PercentWon | percent}}
+    </div>
+    <div class="">
+      {{Model.Beginner.BestTime}}
+    </div>
+    <div class="">
+      {{Model.Beginner.AverageWinTime}}
+    </div>
+  </div>
+  <div class="row-two d-flex flex-row p-2 justify-content-between">
+    <div class="">
+      Intermediate
+    </div>
+    <div class="">
+      {{Model.Intermediate.Won}}
+    </div>
+    <div class="">
+      {{Model.Intermediate.Attempted}}
+    </div>
+    <div class="">
+      {{Model.Intermediate.PercentWon | percent}}
+    </div>
+    <div class="">
+      {{Model.Intermediate.BestTime}}
+    </div>
+    <div class="">
+      {{Model.Intermediate.AverageWinTime}}
+    </div>
+  </div>
+  <div class="row-three d-flex flex-row p-2 justify-content-between">
+    <div class="">
+      Expert
+    </div>
+    <div class="">
+      {{Model.Expert.Won}}
+    </div>
+    <div class="">
+      {{Model.Expert.Attempted}}
+    </div>
+    <div class="">
+      {{Model.Expert.PercentWon | percent}}
+    </div>
+    <div class="">
+      {{Model.Expert.BestTime}}
+    </div>
+    <div class="">
+      {{Model.Expert.AverageWinTime}}
+    </div>
+  </div>
+</div>

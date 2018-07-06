@@ -3,6 +3,8 @@ import { GameStatus } from "../board/GameStatus";
 
 export class CellModel{
 
+    private static IdIndex : number = 0;
+    public Id : number = 0;
     public IsSelected : boolean = false;
     public IsMine : boolean = false;
     public IsFlagged : boolean = false;
@@ -13,9 +15,11 @@ export class CellModel{
     public AdjancentCellLocations : number[][] = [];
     public AdjacentCells : CellModel[] = [];
     public Grid : GridModel;
-    private AddedToFlaggedList : boolean = false;
+    public AddedToFlaggedList : boolean = false;
 
     constructor(grid : GridModel, row : number, column : number){
+        this.Id = CellModel.IdIndex;
+        CellModel.IdIndex++;
         this.Grid = grid;
         this.Row = row;
         this.Column = column;
@@ -82,24 +86,11 @@ export class CellModel{
 
     public RightClickCell(){
 
-        document.addEventListener("contextmenu", function (e) {
-            e.preventDefault();
-        }, false);
-
         if(!this.IsSelected){
             this.IsFlagged = !this.IsFlagged;
         }
 
-        if(!this.AddedToFlaggedList){
-            this.AddedToFlaggedList = true;
-            this.Grid.UpdateLocatedMines(this);
-        }
-        else if(!this.IsFlagged){
-            this.Grid.Board.Counter.Incrememnt();
-        }
-        else{
-            this.Grid.Board.Counter.Decrement();
-        }
+        this.Grid.UpdateLocatedMines(this);
     }
 
     public GetAdjacentCells() : CellModel[]{
