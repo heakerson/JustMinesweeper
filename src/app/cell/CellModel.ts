@@ -91,8 +91,14 @@ export class CellModel{
         }
 
         if(!this.AddedToFlaggedList){
-            this.Grid.UpdateLocatedMines(this);
             this.AddedToFlaggedList = true;
+            this.Grid.UpdateLocatedMines(this);
+        }
+        else if(!this.IsFlagged){
+            this.Grid.Board.Counter.Incrememnt();
+        }
+        else{
+            this.Grid.Board.Counter.Decrement();
         }
     }
 
