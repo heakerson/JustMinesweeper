@@ -9,7 +9,6 @@ export class TimerModel{
         setInterval(() => { 
             if(this.Started){
                 this.Time++; 
-                console.log("count");
             }
         }, 1000);
     }

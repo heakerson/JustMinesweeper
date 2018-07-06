@@ -13,6 +13,7 @@ export class CellModel{
     public AdjancentCellLocations : number[][] = [];
     public AdjacentCells : CellModel[] = [];
     public Grid : GridModel;
+    private AddedToFlaggedList : boolean = false;
 
     constructor(grid : GridModel, row : number, column : number){
         this.Grid = grid;
@@ -89,7 +90,10 @@ export class CellModel{
             this.IsFlagged = !this.IsFlagged;
         }
 
-        this.Grid.UpdateLocatedMines(this);
+        if(!this.AddedToFlaggedList){
+            this.Grid.UpdateLocatedMines(this);
+            this.AddedToFlaggedList = true;
+        }
     }
 
     public GetAdjacentCells() : CellModel[]{
