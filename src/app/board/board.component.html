@@ -1,10 +1,9 @@
-<app-stats [Model]="Model.Stats"></app-stats>
 <div id="BoardContainer" class="d-flex flex-row justify-content-center pt-5">
   <div>
     <app-grid [Model]="Model.Grid"></app-grid>
     <div class="flex-row pt-3">
-      <button (click)="Model.Reset()" class="btn btn-danger mr-3">NEW GAME</button>
-      <button routerLink="/New" class="btn btn-danger">BACK TO MENU</button>
+      <button (click)="Model.Reset()" class="btn btn-outline-primary mr-3">NEW GAME</button>
+      <button routerLink="/New" class="btn btn-outline-primary mr-3">BACK TO MENU</button>
     </div>
   </div>
   <div id="InfoBar" class="flex-column ml-3">

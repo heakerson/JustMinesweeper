@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { StatKeeper } from './StatKeeper';
-import { StatsModel } from './StatsModel';
+//import { StatsModel } from './StatsModel';
+import { StatsService } from '../stats.service';
 
 @Component({
   selector: 'app-stats',
@@ -9,9 +10,9 @@ import { StatsModel } from './StatsModel';
 })
 export class StatsComponent implements OnInit {
 
-  @Input() Model;
+  // @Input() Model;
 
-  constructor() { }
+  constructor(public Stats : StatsService) { }
 
   ngOnInit() {
   }

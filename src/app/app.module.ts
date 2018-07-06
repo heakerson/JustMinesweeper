@@ -10,6 +10,7 @@ import { CellComponent } from './cell/cell.component';
 import { CounterComponent } from './counter/counter.component';
 import { TimerComponent } from './timer/timer.component';
 import { StatsComponent } from './stats/stats.component';
+import { StatsService } from './stats.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { StatsComponent } from './stats/stats.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [StatsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,7 +4,7 @@ import { TimerModel } from "../timer/TimerModel";
 import { DifficultyType, Difficulty } from "../new-game/DifficultyType";
 import { CellModel } from "../cell/CellModel";
 import { GameStatus } from "./GameStatus";
-import { StatsModel } from "../stats/StatsModel";
+import { StatsService } from "../stats.service";
 
 export class BoardModel{
 
@@ -12,14 +12,13 @@ export class BoardModel{
     Counter : CounterModel;
     Timer : TimerModel = new TimerModel(this);
     Difficulty : Difficulty;
-    Stats : StatsModel = new StatsModel();
     Flags : number = 0;
     MinesLocated : number = 0;
     GameStatus : GameStatus = GameStatus.Reset;
     FlaggedCells : CellModel[] = [];
     StatsLogged : boolean = false;
 
-    constructor(difficulty : DifficultyType){
+    constructor(difficulty : DifficultyType, public Stats : StatsService){
         this.Difficulty = new Difficulty(difficulty);
         this.Grid = new GridModel(this.Difficulty.Rows, this.Difficulty.Columns, this);
         this.Counter = new CounterModel(this.Difficulty.MineCount, this);
@@ -72,7 +71,7 @@ export class BoardModel{
     public UpdateLocatedMines(cell : CellModel){
 
         if(cell.IsFlagged){
-            
+
             if(!this.IsInFlaggedList(cell)){
                 this.FlaggedCells.push(cell);
             }

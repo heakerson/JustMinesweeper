@@ -2,6 +2,8 @@
     border: 3px solid black;
     width: 100%;
     border-radius: 5px;
+    font-size: 35px;
+    min-width: 190px;
 }
 
 .done{

@@ -1,10 +1,13 @@
-import { StatKeeper } from "./StatKeeper";
-import { Difficulty, DifficultyType } from "../new-game/DifficultyType";
-import { SimpleChange } from "@angular/core";
-import { TimerModel } from "../timer/TimerModel";
-import { BoardModel } from "../board/BoardModel";
+import { Injectable } from '@angular/core';
+import { TimerModel } from './timer/TimerModel';
+import { StatKeeper } from './stats/StatKeeper';
+import { BoardModel } from './board/BoardModel';
+import { DifficultyType } from './new-game/DifficultyType';
 
-export class StatsModel{
+@Injectable({
+  providedIn: 'root'
+})
+export class StatsService {
 
   public Beginner : StatKeeper = new StatKeeper();
   public Intermediate : StatKeeper = new StatKeeper();
