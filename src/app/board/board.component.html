@@ -1,18 +1,48 @@
 <div id="BoardContainer" class="d-flex flex-row justify-content-center pt-5">
-  <div>
-    <app-grid [Model]="Model.Grid"></app-grid>
-    <div class="flex-row pt-3">
-      <button (click)="Model.Reset()" class="btn btn-outline-primary mr-3">NEW GAME</button>
-      <button routerLink="/New" class="btn btn-outline-primary mr-3">BACK TO MENU</button>
-    </div>
-  </div>
-  <div id="InfoBar" class="flex-column ml-3">
-    <app-timer [Model]="Model.Timer"></app-timer>
-    <app-counter [Model]="Model.Counter"></app-counter>
+  <div class="flex-column">
+
+      <div class="d-flex flex-row">
+        <app-grid [Model]="Model.Grid"></app-grid>
+        <div id="InfoBar" class="flex-column ml-3">
+            <app-timer [Model]="Model.Timer"></app-timer>
+            <app-counter [Model]="Model.Counter"></app-counter>
+          </div>
+      </div>
+
+      <div class="flex-row pt-3">
+        <button (click)="Model.Reset()" class="btn btn-outline-primary mr-3">NEW GAME</button>
+        <button routerLink="/New" class="btn btn-outline-primary mr-3">BACK TO MENU</button>
+        <button type="button" class="btn btn-outline-primary mr-3" data-toggle="modal" data-target="#StatsModal">STATS</button>
+      </div>
+     
   </div>
 </div>
-<!-- 
-<div id="BoardContainer" class="d-flex flex-column align-content-center">
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="StatsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <app-stats></app-stats>
+          <div class="alert alert-warning" role="alert">
+            WARNING!   You will lose you data if you refresh the browser
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- <div id="BoardContainer" class="d-flex flex-column align-content-center">
   <div class="flex-column">
       <div class="d-flex flex-row justify-content-center pt-5">
         <app-grid [Model]="Model.Grid"></app-grid>
