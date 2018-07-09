@@ -1,11 +1,7 @@
 TODO:
 ==========================
-- instead of alert when lost, just reveal all of the mines that weren't uncovered and show which flags were incorrect somehow
-- add the counter and timer to the board
-- add a stats component to the board
-    - games played/attempted
-    - games won
-    - percentage won
-    - best time
-    - average percentage mines located correctly
-    - after current game is lost, display
+- Update stats modal UI
+- Keep stats in a cookie instead of having it disappear every time
+- Update to stats keeper:
+    - average percentage mines located (correctly)
+    - update the stats when the new game button is selected
