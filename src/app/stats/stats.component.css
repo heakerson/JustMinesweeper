@@ -1,20 +1,25 @@
 #StatsContainer{
-    color: fuchsia;
+    color: blue;
 }
 
-.row-one{
-    background-color: blue;
-}
-
-.row-two{
+.stat-row{
     background-color: aqua;
+    padding: 5px 10px 5px 10px;
+    border-radius: 3px;
 }
-
-.row-three{
-    background-color: rgb(185, 255, 255);
-}
-
 
 .flex-row div{
     width:15%;
+}
+
+.won{
+    width:10% !important;
+}
+
+.percent-won{
+    width:10% !important;
+}
+
+.average-win-time{
+    width:20% !important;
 }

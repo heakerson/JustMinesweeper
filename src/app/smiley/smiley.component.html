@@ -1,0 +1,14 @@
+<div id="SmileyContainer" class="px-3 py-1 d-flex flex-row align-items-center"
+  [class.warning]="(Model.Board.GameStatus == 1 || Model.Board.GameStatus == 2 || Model.Board.GameStatus == 0) && 
+      Model.Board.GetFlaggedCount() >= Model.Board.Difficulty.MineCount"
+  [class.danger]="Model.Board.GameStatus == 4">
+
+  <div [ngSwitch]="Model.Board.GameStatus">    
+    <i *ngSwitchCase="3" class="far fa-laugh-beam mr-2"></i>
+    <i *ngSwitchCase="4" class="far fa-dizzy mr-2"></i>
+    <i *ngSwitchDefault class="fas fa-smile mr-2"></i>
+  </div>
+  <div class="smiley-text">
+    <span>Let's play!</span>
+  </div>
+</div>

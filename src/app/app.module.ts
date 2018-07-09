@@ -11,6 +11,7 @@ import { CounterComponent } from './counter/counter.component';
 import { TimerComponent } from './timer/timer.component';
 import { StatsComponent } from './stats/stats.component';
 import { StatsService } from './stats.service';
+import { SmileyComponent } from './smiley/smiley.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { StatsService } from './stats.service';
     CellComponent,
     CounterComponent,
     TimerComponent,
-    StatsComponent
+    StatsComponent,
+    SmileyComponent
   ],
   imports: [
     BrowserModule,

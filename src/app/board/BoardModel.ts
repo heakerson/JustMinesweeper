@@ -5,12 +5,14 @@ import { DifficultyType, Difficulty } from "../new-game/DifficultyType";
 import { CellModel } from "../cell/CellModel";
 import { GameStatus } from "./GameStatus";
 import { StatsService } from "../stats.service";
+import { SmileyModel } from "../smiley/SmillyModel";
 
 export class BoardModel{
 
     Grid : GridModel;
     Counter : CounterModel;
     Timer : TimerModel = new TimerModel(this);
+    Smiley : SmileyModel = new SmileyModel(this);
     Difficulty : Difficulty;
     Flags : number = 0;
     MinesLocated : number = 0;

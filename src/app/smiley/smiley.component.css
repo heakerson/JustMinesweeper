@@ -1,0 +1,22 @@
+#SmileyContainer{
+    border: 3px solid green;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 35px;
+    min-width: 190px;
+    color:green;
+}
+
+.warning{
+    border-color:orange !important;
+    color: orange !important;
+}
+
+.danger{
+    border-color: red !important;
+    color:red !important;
+}
+
+.smiley-text{
+    font-size: 12px;
+}
