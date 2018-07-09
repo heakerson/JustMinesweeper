@@ -94,7 +94,6 @@ export class CellModel{
     }
 
     public GetAdjacentCells() : CellModel[]{
-        let adjCells : CellModel[] = [];
         this.AdjacentCells = [];
         
         for(let location of this.AdjancentCellLocations){
