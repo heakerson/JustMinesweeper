@@ -17,5 +17,6 @@ export class NewGameComponent implements OnInit {
 
   UpdateDifficulty(difficulty : DifficultyType){
     this.Difficulty = difficulty;
+    console.log(this.Difficulty);
   }
 }

@@ -1,10 +1,10 @@
 #SmileyContainer{
-    border: 3px solid green;
+    border: 3px solid black;
     width: 100%;
     border-radius: 5px;
     font-size: 35px;
     min-width: 225px;
-    color:green;
+    color:rgb(0, 219, 0);
 }
 
 .warning{
@@ -17,6 +17,10 @@
     color:red !important;
 }
 
+.win{
+    border-color: rgb(0, 219, 0) !important;
+}
+
 .smiley-text{
-    font-size: 12px;
+    font-size: 16px;
 }

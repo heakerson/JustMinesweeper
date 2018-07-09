@@ -1,5 +1,37 @@
-<div id="AppContainer" class="container-fluid">
-  <div id="StatsContainer">
-  </div>  
-  <router-outlet></router-outlet>
+<div id="AppContainer">
+  <nav id="Header" class="shadow bg-light d-flex flex-row py-3 px-5 align-content-center">
+    <span class="h1 header-label"><i class="fas fa-bomb text-shadow"></i><span class="text-primary">JUST</span>Minesweeper</span>
+    <button type="button" class="btn btn-outline-primary ml-auto" data-toggle="modal" data-target="#StatsModal">STATS</button>
+    <button routerLink="/New" class="btn btn-outline-primary ml-3">BACK TO MENU</button>
+  </nav>
+  <div  class="container-fluid">
+      <div id="StatsContainer"></div>  
+      <router-outlet></router-outlet>
+  </div>
+</div>
+
+
+
+  
+  <!-- Modal -->
+<div class="modal fade" id="StatsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-stats></app-stats>
+        <div class="alert alert-warning mt-3" role="alert">
+          WARNING!   You will lose you data if you refresh the browser
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>

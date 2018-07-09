@@ -1,7 +1,17 @@
-/* #AppContainer{
+#AppContainer{
     padding-top: 10px;
-} */
+    background-color: fuchsia;
+    height: 100vh;
+}
 
 #StatsContainer{
     margin-bottom: 40px;
+}
+
+#Header{
+    
+}
+
+.header-label{
+    color: fuchsia;
 }

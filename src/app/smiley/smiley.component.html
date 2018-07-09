@@ -1,7 +1,8 @@
 <div id="SmileyContainer" class="px-3 py-2"
   [class.warning]="(Model.Board.GameStatus == 1 || Model.Board.GameStatus == 2 || Model.Board.GameStatus == 0) && 
                   Model.Board.GetFlaggedCount() >= Model.Board.Difficulty.MineCount"
-  [class.danger]="Model.Board.GameStatus == 4">
+  [class.danger]="Model.Board.GameStatus == 4"
+  [class.win]="Model.Board.GameStatus == 3">
 
   <div [ngSwitch]="Model.Board.GameStatus">
 
@@ -41,7 +42,7 @@
           <div class="d-flex flex-row align-items-center">
               <i class="fas fa-surprise mr-2"></i>
               <div class="smiley-text">
-                <span>Something has gone awry...</span>
+                <span>Uh oh...</span>
               </div>
           </div>
       </ng-template>
