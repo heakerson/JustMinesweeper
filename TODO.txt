@@ -1,5 +1,6 @@
 TODO:
 ==========================
+- Stop game when the stats modal is open
 - Update stats modal UI
 - Keep stats in a cookie instead of having it disappear every time
 - Update to stats keeper:

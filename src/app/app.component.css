@@ -15,3 +15,7 @@
 .header-label{
     color: fuchsia;
 }
+
+.container-fluid{
+    background-color: fuchsia;
+}
