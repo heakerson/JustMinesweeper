@@ -1,12 +1,12 @@
 <div id="AppContainer">
   <nav id="Header" class="shadow bg-light d-flex flex-row py-3 px-5 align-content-center">
     <span class="h1 header-label"><i class="fas fa-bomb text-shadow"></i><span class="text-primary">JUST</span>Minesweeper</span>
-    <button type="button" class="btn btn-outline-primary ml-auto" data-toggle="modal" data-target="#StatsModal">STATS</button>
+    <button type="button" class="btn btn-outline-primary ml-auto" data-toggle="modal" data-target="#StatsModal" (click)="PauseGame()">STATS</button>
     <button routerLink="/New" class="btn btn-outline-primary ml-3">BACK TO MENU</button>
   </nav>
   <div  class="container-fluid">
       <div id="StatsContainer"></div>  
-      <router-outlet></router-outlet>
+      <router-outlet (activate)="onActivate($event)"></router-outlet>
   </div>
 </div>
 
@@ -30,7 +30,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="StartGame()">Close</button>
       </div>
     </div>
   </div>
