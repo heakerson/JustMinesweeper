@@ -45,6 +45,12 @@
     border: 2px solid #00ff43;
 }
 
+.paused {
+    background-color: gray !important;
+    border: 2px solid gray;
+    color: gray !important;
+}
+
 /* .fa-times{
     font-size: 21px;
 } */

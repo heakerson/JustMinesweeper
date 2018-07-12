@@ -114,4 +114,12 @@ export class GridModel{
             }
         }
     }
+
+    public Pause(){    
+        for(let row of this.CellArray){
+            for(let cell of row){
+                cell.Pause();
+            }
+        }
+    }
 }

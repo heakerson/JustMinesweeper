@@ -3,5 +3,6 @@ export enum GameStatus{
     Started,
     Stopped,
     Win,
-    Lose
+    Lose,
+    Paused
 }

@@ -9,6 +9,7 @@ export class CellModel{
     public IsMine : boolean = false;
     public IsFlagged : boolean = false;
     public IsRevealed : boolean = false;
+    public IsPaused : boolean = false;
     public Row : number = -1;
     public Column : number = -1;
     public Count : number = 0;
@@ -84,13 +85,26 @@ export class CellModel{
                 (this.Grid.Board.GameStatus == GameStatus.Reset || this.Grid.Board.GameStatus == GameStatus.Started)
     }
 
+    public IsRightClickable() : boolean{
+        return !this.IsSelected && 
+                (this.Grid.Board.GameStatus == GameStatus.Reset || this.Grid.Board.GameStatus == GameStatus.Started)
+    }
+
     public RightClickCell(){
 
-        if(!this.IsSelected){
+        if(this.IsRightClickable()){
+
             this.IsFlagged = !this.IsFlagged;
+
+            if(this.Grid.Board.GameStatus == GameStatus.Reset){
+                this.Grid.GenerateMines(this.Grid.Board.Difficulty.MineCount, this.Row, this.Column);
+                this.Grid.Board.Start();
+            }
+
+            this.Grid.UpdateLocatedMines(this);
+
         }
 
-        this.Grid.UpdateLocatedMines(this);
     }
 
     public GetAdjacentCells() : CellModel[]{
@@ -125,6 +139,10 @@ export class CellModel{
         else if(!this.IsMine && this.IsFlagged){
             this.IsRevealed = true;
         }
+    }
+
+    public Pause(){
+        this.IsPaused = !this.IsPaused;
     }
 
     public Reset(){

@@ -1,6 +1,7 @@
 TODO:
 ==========================
-- Create Pause functionality
+- Add a pause state to the smiley
+- Fix that you can highlight over the cells when paused and see the contents
 - Update stats modal UI
 - Keep stats in a cookie instead of having it disappear every time
 - Update to stats keeper:

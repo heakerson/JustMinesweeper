@@ -36,6 +36,8 @@ export class BoardModel{
             this.Stats.Update(this, this.Timer, false);
         }
 
+        this.TogglePause();
+
         this.GameStatus = GameStatus.Reset;
         this.Flags = 0;
         this.MinesLocated = 0;
@@ -50,6 +52,18 @@ export class BoardModel{
     public Stop(){
         this.Timer.Stop();
         this.GameStatus = GameStatus.Stopped;
+    }
+
+    public TogglePause(){
+        if(this.GameStatus == GameStatus.Started){
+            this.Timer.Stop();
+            this.GameStatus = GameStatus.Paused;
+            this.Grid.Pause();
+        }
+        else if(this.GameStatus == GameStatus.Paused){
+            this.Start();
+            this.Grid.Pause();
+        }
     }
 
     public Start(){

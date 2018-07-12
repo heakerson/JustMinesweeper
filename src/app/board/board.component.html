@@ -8,13 +8,23 @@
           <app-timer [Model]="Model.Timer"></app-timer>
           <app-counter [Model]="Model.Counter"></app-counter>
           <button (click)="Model.Reset()" class="btn btn-outline-primary align-self-end w-100 mt-2">NEW GAME</button>
+          <button (click)="Model.TogglePause()" class="btn btn-outline-primary align-self-end w-100 mt-2">
+            
+            <div *ngIf="Model.GameStatus == 5; else pause" class="">
+              <span>START</span>
+              <i class="fas fa-play ml-2"></i>
+            </div>
+
+            <ng-template #pause>
+              <div class="">
+                <span>PAUSE</span>
+                <i class="fas fa-pause ml-2"></i>
+              </div>
+            </ng-template>
+
+          </button>
         </div>
-      </div>
-<!-- 
-      <div class="flex-row pt-3">
-        
-      </div> -->
-     
+      </div>   
   </div>
 </div>
 

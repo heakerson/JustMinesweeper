@@ -1,7 +1,7 @@
 <div id="AppContainer">
   <nav id="Header" class="shadow bg-light d-flex flex-row py-3 px-5 align-content-center">
     <span class="h1 header-label"><i class="fas fa-bomb text-shadow"></i><span class="text-primary">JUST</span>Minesweeper</span>
-    <button type="button" class="btn btn-outline-primary ml-auto" data-toggle="modal" data-target="#StatsModal" (click)="PauseGame()">STATS</button>
+    <button type="button" class="btn btn-outline-primary ml-auto" data-toggle="modal" data-target="#StatsModal" (click)="TogglePause()">STATS</button>
     <button routerLink="/New" class="btn btn-outline-primary ml-3">BACK TO MENU</button>
   </nav>
   <div  class="container-fluid">
@@ -30,7 +30,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="StartGame()">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="TogglePause()">Close</button>
       </div>
     </div>
   </div>

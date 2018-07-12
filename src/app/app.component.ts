@@ -15,17 +15,9 @@ export class AppComponent{
       this.ChildComponent = <BoardComponent>comp;
   }
 
-  PauseGame(){
+  TogglePause(){
     if(this.ChildComponent instanceof BoardComponent){
-      this.ChildComponent.Model.Stop();
-    }
-  }
-
-  StartGame(){
-    if(this.ChildComponent instanceof BoardComponent){
-      if(this.ChildComponent.Model.GameStatus == GameStatus.Stopped){
-        this.ChildComponent.Model.Start();
-      }
+      this.ChildComponent.Model.TogglePause();
     }
   }
 
