@@ -7,7 +7,25 @@
           <app-smiley [Model]="Model.Smiley"></app-smiley>
           <app-timer [Model]="Model.Timer"></app-timer>
           <app-counter [Model]="Model.Counter"></app-counter>
-          <button (click)="Model.Reset()" class="btn btn-outline-primary align-self-end w-100 mt-2">NEW GAME</button>
+          <div class="d-flex flex-row mt-2">
+              <button (click)="Model.Reset()" class="btn btn-outline-primary">NEW GAME</button>
+              <button (click)="Model.TogglePause()" class="btn btn-outline-primary ml-1 w-50">
+            
+                  <div *ngIf="Model.GameStatus == 5; else pause" class="">
+                    <span>START</span>
+                    <i class="fas fa-play ml-2"></i>
+                  </div>
+      
+                  <ng-template #pause>
+                    <div class="">
+                      <span>PAUSE</span>
+                      <i class="fas fa-pause ml-2"></i>
+                    </div>
+                  </ng-template>
+      
+                </button>
+          </div>
+          <!-- <button (click)="Model.Reset()" class="btn btn-outline-primary align-self-end w-100 mt-2">NEW GAME</button>
           <button (click)="Model.TogglePause()" class="btn btn-outline-primary align-self-end w-100 mt-2">
             
             <div *ngIf="Model.GameStatus == 5; else pause" class="">
@@ -22,7 +40,7 @@
               </div>
             </ng-template>
 
-          </button>
+          </button> -->
         </div>
       </div>   
   </div>

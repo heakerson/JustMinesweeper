@@ -1,5 +1,6 @@
 TODO:
 ==========================
+- Disable Pause/Start button if the game is not in a started/stopped status
 - Add a pause state to the smiley
 - Fix that you can highlight over the cells when paused and see the contents
 - Update stats modal UI
