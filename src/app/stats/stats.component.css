@@ -1,11 +1,16 @@
 #StatsContainer{
-    color: blue;
+    /* color: blue; */
 }
 
 .stat-row{
-    background-color: aqua;
+    /* background-color: aqua; */
     padding: 5px 10px 5px 10px;
-    border-radius: 3px;
+    /* border-radius: 3px; */
+    /* border-bottom: 2px solid black; */
+}
+
+.stat-row div{
+    /* border-right: solid black 2px; */
 }
 
 .flex-row div{
@@ -21,5 +26,13 @@
 }
 
 .average-win-time{
-    width:20% !important;
+    width:18% !important;
+}
+
+.bg-gray{
+    background-color: rgb(172, 172, 172);
+}
+
+.bg-light-gray{
+    background-color: rgb(233, 233, 233);
 }
