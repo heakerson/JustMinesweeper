@@ -1,6 +1,5 @@
 TODO:
 ==========================
-- Add text-primary to any stats cell that isn't zero
 - I need a reset stats button
 - Keep stats in local storage instead of having it disappear every time
 - Change the smiley on every down click

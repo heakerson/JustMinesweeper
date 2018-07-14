@@ -23,19 +23,19 @@
     <div class="text-dark">
       Beginner
     </div>
-    <div class="won">
+    <div class="won" [class.text-primary]="Stats.Beginner.Won != 0">
       {{Stats.Beginner.Won}}
     </div>
-    <div class="attempted">
+    <div class="attempted" [class.text-primary]="Stats.Beginner.Attempted != 0">
       {{Stats.Beginner.Attempted}}
     </div>
-    <div class="percent-won">
+    <div class="percent-won" [class.text-primary]="Stats.Beginner.PercentWon != 0">
       {{Stats.Beginner.PercentWon | percent}}
     </div>
-    <div class="best-time">
+    <div class="best-time" [class.text-primary]="Stats.Beginner.BestTime != 0">
       {{Stats.Beginner.BestTime}}
     </div>
-    <div class="average-win-time">
+    <div class="average-win-time" [class.text-primary]="Stats.Beginner.AverageWinTime != 0">
       {{Stats.Beginner.AverageWinTime}}
     </div>
   </div>
@@ -43,19 +43,19 @@
     <div class="text-dark">
       Intermediate
     </div>
-    <div class="won">
+    <div class="won" [class.text-primary]="Stats.Intermediate.Won != 0">
       {{Stats.Intermediate.Won}}
     </div>
-    <div class="attempted">
+    <div class="attempted" [class.text-primary]="Stats.Intermediate.Attempted != 0">
       {{Stats.Intermediate.Attempted}}
     </div>
-    <div class="percent-won">
+    <div class="percent-won" [class.text-primary]="Stats.Intermediate.PercentWon != 0">
       {{Stats.Intermediate.PercentWon | percent}}
     </div>
-    <div class="best-time">
+    <div class="best-time" [class.text-primary]="Stats.Intermediate.BestTime != 0">
       {{Stats.Intermediate.BestTime}}
     </div>
-    <div class="average-win-time">
+    <div class="average-win-time" [class.text-primary]="Stats.Intermediate.AverageWinTime != 0">
       {{Stats.Intermediate.AverageWinTime}}
     </div>
   </div>
@@ -63,19 +63,19 @@
     <div class="text-dark">
       Expert
     </div>
-    <div class="won">
+    <div class="won" [class.text-primary]="Stats.Expert.Won != 0">
       {{Stats.Expert.Won}}
     </div>
-    <div class="attempted">
+    <div class="attempted" [class.text-primary]="Stats.Expert.Attempted != 0">
       {{Stats.Expert.Attempted}}
     </div>
-    <div class="percent-won">
+    <div class="percent-won" [class.text-primary]="Stats.Expert.PercentWon != 0">
       {{Stats.Expert.PercentWon | percent}}
     </div>
-    <div class="best-time">
+    <div class="best-time" [class.text-primary]="Stats.Expert.BestTime != 0">
       {{Stats.Expert.BestTime}}
     </div>
-    <div class="average-win-time">
+    <div class="average-win-time" [class.text-primary]="Stats.Expert.AverageWinTime != 0">
       {{Stats.Expert.AverageWinTime}}
     </div>
   </div>
