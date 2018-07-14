@@ -1,8 +1,9 @@
 TODO:
 ==========================
-- Add a pause state to the smiley
-- Fix that you can highlight over the cells when paused and see the contents
 - Update stats modal UI
+- Change the smiley on every down click
+- Do I want the hollow smiley's instead?
+- Fix that you can highlight over the cells when paused and see the contents
 - Keep stats in a cookie instead of having it disappear every time
 - Update to stats keeper:
     - average percentage mines located (correctly)

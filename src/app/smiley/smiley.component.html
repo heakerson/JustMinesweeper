@@ -2,21 +2,29 @@
   [class.warning]="(Model.Board.GameStatus == 1 || Model.Board.GameStatus == 2 || Model.Board.GameStatus == 0) && 
                   Model.Board.GetFlaggedCount() >= Model.Board.Difficulty.MineCount"
   [class.danger]="Model.Board.GameStatus == 4"
-  [class.win]="Model.Board.GameStatus == 3">
+  [class.win]="Model.Board.GameStatus == 3"
+  [class.paused]="Model.Board.GameStatus == 5">
 
   <div [ngSwitch]="Model.Board.GameStatus">
 
     <div *ngSwitchCase="3" class="d-flex flex-row align-items-center">
         <i class="fas fa-laugh-beam mr-2"></i>
         <div class="smiley-text">
-          <span>You win!!</span>
+          <span>WIN!!</span>
         </div>
     </div>
 
     <div *ngSwitchCase="4" class="d-flex flex-row align-items-center">
         <i class="fas fa-dizzy mr-2"></i>
         <div class="smiley-text">
-          <span>You Lost!!</span>
+          <span>OH NO!</span>
+        </div>
+    </div>
+
+    <div *ngSwitchCase="5" class="d-flex flex-row align-items-center">
+        <i class="fas fa-meh-blank mr-2"></i>
+        <div class="smiley-text">
+          <span>PAUSED</span>
         </div>
     </div>
 
@@ -25,7 +33,7 @@
       <div *ngIf="Model.Board.GameStatus == 0 && Model.Board.GetFlaggedCount() < Model.Board.Difficulty.MineCount; else playing" class="d-flex flex-row align-items-center">
           <i  class="fas fa-smile mr-2"></i>
           <div class="smiley-text">
-            <span>Let's Play!</span>
+            <span>LET'S PLAY!</span>
           </div>
       </div>
 
@@ -33,7 +41,7 @@
           <div *ngIf="Model.Board.GetFlaggedCount() < Model.Board.Difficulty.MineCount; else awry" class="d-flex flex-row align-items-center">
               <i  class="fas fa-smile mr-2"></i>
               <div class="smiley-text">
-                <span>Keep Going!</span>
+                <span>KEEP GOING</span>
               </div>
           </div>
       </ng-template>
@@ -42,7 +50,7 @@
           <div class="d-flex flex-row align-items-center">
               <i class="fas fa-surprise mr-2"></i>
               <div class="smiley-text">
-                <span>Uh oh...</span>
+                <span>HMMM...</span>
               </div>
           </div>
       </ng-template>
