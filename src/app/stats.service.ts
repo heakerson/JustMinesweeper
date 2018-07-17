@@ -9,9 +9,9 @@ import { DifficultyType } from './new-game/DifficultyType';
 })
 export class StatsService {
 
-  public Beginner : StatKeeper = new StatKeeper();
-  public Intermediate : StatKeeper = new StatKeeper();
-  public Expert : StatKeeper = new StatKeeper();
+  public Beginner : StatKeeper = new StatKeeper(DifficultyType.Easy);
+  public Intermediate : StatKeeper = new StatKeeper(DifficultyType.Intermediate);
+  public Expert : StatKeeper = new StatKeeper(DifficultyType.Expert);
 
   public Update(board : BoardModel, timer : TimerModel, win : boolean){
     switch(board.Difficulty.Type){

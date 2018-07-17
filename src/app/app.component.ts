@@ -1,6 +1,6 @@
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { BoardComponent } from './board/board.component';
-import { GameStatus } from './board/GameStatus';
+import { StatsService } from './stats.service';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +11,16 @@ export class AppComponent{
   
   ChildComponent : BoardComponent;
 
+  constructor(public Stats : StatsService){}
+
   onActivate(comp){
       this.ChildComponent = <BoardComponent>comp;
+  }
+
+  ClearStats(){
+    this.Stats.Beginner.ClearStats();
+    this.Stats.Intermediate.ClearStats();
+    this.Stats.Expert.ClearStats();
   }
 
   TogglePause(){

@@ -1,7 +1,5 @@
 TODO:
 ==========================
-- I need a reset stats button
-- Keep stats in local storage instead of having it disappear every time
 - Change the smiley on every down click
 - Deploy!
 - Do I want the hollow smiley's instead?
