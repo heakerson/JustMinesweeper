@@ -1,9 +1,13 @@
 TODO:
 ==========================
 - Deploy!
+- Get some kind of traffic counter
 - Do I want the hollow smiley's instead?
 - Fix that you can highlight over the cells when paused and see the contents
 - Add social media sharing buttons
+- Get the info bar next to the grid to look better
+    - Maybe consider adding the counter/smiley/timer components in to a single box container somehow
+- Create a better disabled class for the pause button (more visible somehow, maybe gray?)
 - Update to stats keeper:
     - add 2 decimal points to best time
     - average percentage mines located (correctly)

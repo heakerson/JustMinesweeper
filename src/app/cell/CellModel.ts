@@ -91,7 +91,7 @@ export class CellModel{
     }
 
     public MouseDown(){
-        if(this.IsClickable()){
+        if(this.IsClickable() || this.IsRightClickable()){
             this.Grid.MouseDown = true;
         }
     }
