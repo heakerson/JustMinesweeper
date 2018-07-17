@@ -30,12 +30,18 @@
 
     <div *ngSwitchDefault>
 
-      <div *ngIf="Model.Board.GameStatus == 0 && Model.Board.GetFlaggedCount() < Model.Board.Difficulty.MineCount; else playing" class="d-flex flex-row align-items-center">
-          <i  class="fas fa-smile mr-2"></i>
-          <div class="smiley-text">
-            <span>LET'S PLAY!</span>
-          </div>
+      <div *ngIf="Model.Board.Grid.MouseDown; else start" class="d-flex flex-row align-items-center">
+          <i class="fas fa-grin-tongue-wink"></i>
       </div>
+
+      <ng-template #start>
+          <div *ngIf="Model.Board.GameStatus == 0 && Model.Board.GetFlaggedCount() < Model.Board.Difficulty.MineCount; else playing" class="d-flex flex-row align-items-center">
+              <i  class="fas fa-smile mr-2"></i>
+              <div class="smiley-text">
+                <span>LET'S PLAY!</span>
+              </div>
+          </div>
+      </ng-template>
 
       <ng-template #playing>
           <div *ngIf="Model.Board.GetFlaggedCount() < Model.Board.Difficulty.MineCount; else awry" class="d-flex flex-row align-items-center">

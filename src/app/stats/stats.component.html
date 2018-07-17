@@ -16,7 +16,7 @@
       Best Win Time
     </div>
     <div class="average-win-time">
-      Avg Win Time
+      Avg Win Time (s)
     </div>
   </div>
   <div class="stat-row d-flex flex-row justify-content-between bg-gray">
@@ -36,7 +36,7 @@
       {{Stats.Beginner.BestTime}}
     </div>
     <div class="average-win-time" [class.text-primary]="Stats.Beginner.AverageWinTime != 0">
-      {{Stats.Beginner.AverageWinTime}}
+      {{Stats.Beginner.AverageWinTime | number:'1.0-2'}}
     </div>
   </div>
   <div class="stat-row d-flex flex-row justify-content-between bg-light-gray">

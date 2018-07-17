@@ -5,7 +5,7 @@
     [class.is-revealed]="Model.IsRevealed"
     [class.won]="Model.Grid.Board.GameStatus == 3 && Model.IsMine"
     [class.paused]="Model.IsPaused"
-    class="cell-container bg-primary text-center" (contextmenu)="RightClickCell()" (click)="ClickCell()">
+    class="cell-container bg-primary text-center" (contextmenu)="RightClickCell()" (click)="ClickCell()" (mousedown)="Model.MouseDown()" (mouseup)="Model.MouseUp()">
 
     <span *ngIf="Model.IsSelected && !Model.IsMine; else icon">
       {{Model.Count}}

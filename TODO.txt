@@ -1,10 +1,11 @@
 TODO:
 ==========================
-- Change the smiley on every down click
 - Deploy!
 - Do I want the hollow smiley's instead?
 - Fix that you can highlight over the cells when paused and see the contents
 - Add social media sharing buttons
 - Update to stats keeper:
+    - add 2 decimal points to best time
     - average percentage mines located (correctly)
     - update the stats when the new game button is selected
+- Add a best time notification somewhere?

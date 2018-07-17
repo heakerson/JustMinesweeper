@@ -10,6 +10,7 @@ export class GridModel{
     public Columns : number = 0;
     public MinesLocated : number = 0;
     public MineCells : CellModel[];
+    public MouseDown : boolean = false;
 
     constructor(rows : number, columns : number, board : BoardModel){
         this.Board = board;

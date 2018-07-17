@@ -90,6 +90,16 @@ export class CellModel{
                 (this.Grid.Board.GameStatus == GameStatus.Reset || this.Grid.Board.GameStatus == GameStatus.Started)
     }
 
+    public MouseDown(){
+        if(this.IsClickable()){
+            this.Grid.MouseDown = true;
+        }
+    }
+
+    public MouseUp(){
+        this.Grid.MouseDown = false;
+    }
+
     public RightClickCell(){
 
         if(this.IsRightClickable()){
