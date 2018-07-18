@@ -9,7 +9,7 @@ TODO:
     - Maybe consider adding the counter/smiley/timer components in to a single box container somehow
 - Create a better disabled class for the pause button (more visible somehow, maybe gray?)
 - Update to stats keeper:
-    - add 2 decimal points to best time
+    - add 2 decimal points to best time and maybe the timer?
     - average percentage mines located (correctly)
     - update the stats when the new game button is selected
 - Add a best time notification somewhere?
