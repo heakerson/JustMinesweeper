@@ -9,6 +9,7 @@ import { DifficultyType } from './DifficultyType';
 export class NewGameComponent implements OnInit {
 
   public Difficulty : DifficultyType = DifficultyType.Easy;
+  //public List : number[] = [1,2,3,4]
 
   constructor() { }
 
