@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { TimerModel } from './timer/TimerModel';
-import { StatKeeper } from './stats/StatKeeper';
-import { BoardModel } from './board/BoardModel';
-import { DifficultyType } from './new-game/DifficultyType';
+import { TimerModel } from '../timer/TimerModel';
+import { StatKeeper } from '../stats/StatKeeper';
+import { BoardModel } from '../board/BoardModel';
+import { DifficultyType } from '../new-game/DifficultyType';
 
 @Injectable({
   providedIn: 'root'

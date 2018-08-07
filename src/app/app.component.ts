@@ -1,6 +1,6 @@
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { BoardComponent } from './board/board.component';
-import { StatsService } from './stats.service';
+import { StatsService } from './Services/stats.service';
 
 @Component({
   selector: 'app-root',

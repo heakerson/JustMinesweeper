@@ -1,18 +1,28 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { GridModel } from './GridModel';
+import { IUpdateable } from '../Interfaces/IUpdateable';
+import { GameStateService } from '../Services/game-state.service';
+import { GameStatus } from '../board/GameStatus';
 
 @Component({
   selector: 'app-grid',
   templateUrl: './grid.component.html',
   styleUrls: ['./grid.component.css']
 })
-export class GridComponent implements OnInit {
+export class GridComponent implements OnInit, IUpdateable {
 
   @Input() Model : GridModel;
 
-  constructor() {}
+  constructor(public gameStateService : GameStateService) {}
 
   ngOnInit() {
+    this.gameStateService.RegisterUpdateable(this);
   }
 
+  Reset():void {};
+  Start():void {};
+  Stop():void {};
+  Pause():void {};
+  Win():void {};
+  Lose():void {};
 }
