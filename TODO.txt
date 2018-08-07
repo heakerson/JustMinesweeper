@@ -1,5 +1,8 @@
 TODO:
 ==========================
+- Refactor!
+    - I think I need to start moving as much logic as possible to the actual state change methods in 
+    - UNCOMMENT OUT THE REGISTRATION OF THE COMPONENTS
 - Deploy!
 - Get some kind of traffic counter
 - Do I want the hollow smiley's instead?
