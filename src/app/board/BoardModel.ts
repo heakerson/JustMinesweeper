@@ -4,8 +4,10 @@ import { TimerModel } from "../timer/TimerModel";
 import { DifficultyType, Difficulty } from "../new-game/DifficultyType";
 import { CellModel } from "../cell/CellModel";
 import { GameStatus } from "./GameStatus";
-import { StatsService } from "../stats.service";
+import { StatsService } from "../Services/stats.service";
 import { SmileyModel } from "../smiley/SmillyModel";
+import { GameStateService } from "../Services/game-state.service";
+import { BoardService } from "../Services/board.service";
 
 export class BoardModel{
 
@@ -20,7 +22,13 @@ export class BoardModel{
     FlaggedCells : CellModel[] = [];
     StatsLogged : boolean = false;
 
-    constructor(difficulty : DifficultyType, public Stats : StatsService){
+    constructor(
+        difficulty : DifficultyType, 
+        public Stats : StatsService, 
+        private gameStateService : GameStateService,
+        private boardService : BoardService
+    )
+    {
         this.Difficulty = new Difficulty(difficulty);
         this.Grid = new GridModel(this.Difficulty.Rows, this.Difficulty.Columns, this);
         this.Counter = new CounterModel(this.Difficulty.MineCount, this);
@@ -64,6 +72,8 @@ export class BoardModel{
             this.Start();
             this.Grid.Pause();
         }
+
+        this.gameStateService.SetState(this.GameStatus);
     }
 
     public Start(){
