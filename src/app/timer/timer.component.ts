@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TimerModel } from './TimerModel';
-import { GameStateService } from '../Services/game-state.service';
+import { GameStateManager } from '../Services/game-state.service';
 import { GameStatus } from '../board/GameStatus';
 import { IUpdateable } from '../Interfaces/IUpdateable';
 
@@ -13,10 +13,10 @@ export class TimerComponent implements OnInit, IUpdateable {
 
   @Input() Model : TimerModel;
 
-  constructor(public gameStateService : GameStateService) { }
+  constructor(public gameStateManager : GameStateManager) { }
 
   ngOnInit() {
-    this.gameStateService.RegisterUpdateable(this);
+    this.gameStateManager.RegisterUpdateable(this);
   }
 
   Reset():void {};

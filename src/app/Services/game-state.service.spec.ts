@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { GameStateService } from './game-state.service';
+import { GameStateManager } from './game-state.service';
 
 describe('GameStateService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [GameStateService]
+      providers: [GameStateManager]
     });
   });
 
-  it('should be created', inject([GameStateService], (service: GameStateService) => {
+  it('should be created', inject([GameStateManager], (service: GameStateManager) => {
     expect(service).toBeTruthy();
   }));
 });

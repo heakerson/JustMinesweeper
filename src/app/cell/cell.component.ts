@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { CellModel } from './CellModel';
 import { GameStatus } from '../board/GameStatus';
 import { IUpdateable } from '../Interfaces/IUpdateable';
-import { GameStateService } from '../Services/game-state.service';
+import { GameStateManager } from '../Services/game-state.service';
 
 @Component({
   selector: 'app-cell',
@@ -13,10 +13,10 @@ export class CellComponent implements OnInit, IUpdateable {
 
   @Input() Model : CellModel;
 
-  constructor(public gameStateService : GameStateService) { }
+  constructor(public gameStateManager : GameStateManager) { }
 
   ngOnInit() {
-    this.gameStateService.RegisterUpdateable(this);
+    this.gameStateManager.RegisterUpdateable(this);
   }
 
   ClickCell(){

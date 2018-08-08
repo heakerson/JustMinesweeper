@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { GridModel } from './GridModel';
 import { IUpdateable } from '../Interfaces/IUpdateable';
-import { GameStateService } from '../Services/game-state.service';
+import { GameStateManager } from '../Services/game-state.service';
 import { GameStatus } from '../board/GameStatus';
 
 @Component({
@@ -13,10 +13,10 @@ export class GridComponent implements OnInit, IUpdateable {
 
   @Input() Model : GridModel;
 
-  constructor(public gameStateService : GameStateService) {}
+  constructor(public gameStateManager : GameStateManager) {}
 
   ngOnInit() {
-    this.gameStateService.RegisterUpdateable(this);
+    this.gameStateManager.RegisterUpdateable(this);
   }
 
   Reset():void {};

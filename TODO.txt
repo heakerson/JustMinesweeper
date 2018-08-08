@@ -1,6 +1,24 @@
 TODO:
 ==========================
 - Refactor!
+    Step 1: Create Services for all for all of the components and remove all logic from the models
+        -DONE counter
+        -timer
+        -smiley
+        -stats?
+        -cell
+        -grid
+        -board
+    Step 2. Move the logic out of the services and back in to the component state methods
+        -counter
+        -timer
+        -smiley
+        -stats?
+        -cell
+        -grid
+        -board
+    Step 3. Delete all the services
+
     - I think I need to start moving as much logic as possible to the actual state change methods in 
     - UNCOMMENT OUT THE REGISTRATION OF THE COMPONENTS
 - Deploy!

@@ -6,7 +6,7 @@
         <div id="InfoBar" class="d-flex flex-column ml-4">
           <app-smiley [Model]="Model.Smiley"></app-smiley>
           <app-timer [Model]="Model.Timer"></app-timer>
-          <app-counter [Model]="Model.Counter"></app-counter>
+          <app-counter></app-counter>
           <div class="d-flex flex-row mt-2">
               <button (click)="Model.Reset()" class="btn btn-outline-primary">NEW GAME</button>
               <button (click)="Model.TogglePause()" [disabled]="Model.GameStatus != 5 && Model.GameStatus !=1" class="btn btn-outline-primary ml-2 w-50">

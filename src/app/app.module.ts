@@ -12,7 +12,7 @@ import { TimerComponent } from './timer/timer.component';
 import { StatsComponent } from './stats/stats.component';
 import { StatsService } from './Services/stats.service';
 import { SmileyComponent } from './smiley/smiley.component';
-import { GameStateService } from './Services/game-state.service';
+import { GameStateManager } from './Services/game-state.service';
 import { BoardService } from './Services/board.service';
 
 @NgModule({
@@ -33,8 +33,8 @@ import { BoardService } from './Services/board.service';
   ],
   providers: [
     StatsService, 
-    GameStateService,
-    BoardService
+    GameStateManager,
+    BoardService,
   ],
   bootstrap: [AppComponent]
 })

@@ -1,18 +1,19 @@
 import { GridModel } from "../grid/GridModel";
-import { CounterModel } from "../counter/CounterModel";
+// import { CounterModel } from "../counter/CounterModel";
 import { TimerModel } from "../timer/TimerModel";
 import { DifficultyType, Difficulty } from "../new-game/DifficultyType";
 import { CellModel } from "../cell/CellModel";
 import { GameStatus } from "./GameStatus";
 import { StatsService } from "../Services/stats.service";
 import { SmileyModel } from "../smiley/SmillyModel";
-import { GameStateService } from "../Services/game-state.service";
+import { GameStateManager } from "../Services/game-state.service";
 import { BoardService } from "../Services/board.service";
+import { CounterService } from "../counter/counter.service";
 
 export class BoardModel{
 
     Grid : GridModel;
-    Counter : CounterModel;
+    // Counter : CounterModel;
     Timer : TimerModel = new TimerModel(this);
     Smiley : SmileyModel = new SmileyModel(this);
     Difficulty : Difficulty;
@@ -25,13 +26,14 @@ export class BoardModel{
     constructor(
         difficulty : DifficultyType, 
         public Stats : StatsService, 
-        private gameStateService : GameStateService,
-        private boardService : BoardService
+        private gameStateService : GameStateManager,
+        private boardService : BoardService,
+        private counterService : CounterService
     )
     {
         this.Difficulty = new Difficulty(difficulty);
         this.Grid = new GridModel(this.Difficulty.Rows, this.Difficulty.Columns, this);
-        this.Counter = new CounterModel(this.Difficulty.MineCount, this);
+        // this.Counter = new CounterModel(this.Difficulty.MineCount);
 
         document.addEventListener("contextmenu", function (e) {
             e.preventDefault();
@@ -53,7 +55,7 @@ export class BoardModel{
         this.FlaggedCells = [];
 
         this.Timer.Reset();
-        this.Counter.Reset(this.Difficulty.MineCount);
+        this.counterService.Reset(this.Difficulty.MineCount);
         this.Grid.Reset();
     }
 
@@ -106,7 +108,7 @@ export class BoardModel{
                 this.MinesLocated++;
             }
 
-            this.Counter.Decrement();
+            this.counterService.Decrement();
             this.Flags--;
         }
         else{
@@ -115,7 +117,7 @@ export class BoardModel{
                 this.MinesLocated--;
             }
 
-            this.Counter.Incrememnt();
+            this.counterService.Incrememnt();
             this.Flags++;
         }
 

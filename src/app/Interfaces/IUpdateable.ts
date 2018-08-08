@@ -1,9 +1,9 @@
 import { GameStatus } from "../board/GameStatus";
-import { GameStateService } from "../Services/game-state.service";
+import { GameStateManager } from "../Services/game-state.service";
 
 export interface IUpdateable {
-    
-    gameStateService : GameStateService;
+
+    gameStateManager : GameStateManager;
 
     Reset():void;
     Start():void;

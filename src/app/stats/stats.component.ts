@@ -4,7 +4,7 @@ import { StatKeeper } from './StatKeeper';
 import { StatsService } from '../Services/stats.service';
 import { IUpdateable } from '../Interfaces/IUpdateable';
 import { GameStatus } from '../board/GameStatus';
-import { GameStateService } from '../Services/game-state.service';
+import { GameStateManager } from '../Services/game-state.service';
 
 @Component({
   selector: 'app-stats',
@@ -15,12 +15,12 @@ export class StatsComponent implements OnInit, IUpdateable {
 
   // @Input() Model;
 
-  constructor(public Stats : StatsService, public gameStateService : GameStateService) { }
+  constructor(public Stats : StatsService, public gameStateManager : GameStateManager) { }
 
   ngOnInit() {
-    this.gameStateService.RegisterUpdateable(this);
+    this.gameStateManager.RegisterUpdateable(this);
   }
-  
+
   Reset():void {};
   Start():void {};
   Stop():void {};

@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CounterModel } from './CounterModel';
+// import { CounterModel } from './CounterModel';
 import { IUpdateable } from '../Interfaces/IUpdateable';
 import { GameStatus } from '../board/GameStatus';
-import { GameStateService } from '../Services/game-state.service';
+import { GameStateManager } from '../Services/game-state.service';
+import { CounterService } from './counter.service';
 
 @Component({
   selector: 'app-counter',
@@ -11,12 +12,10 @@ import { GameStateService } from '../Services/game-state.service';
 })
 export class CounterComponent implements OnInit, IUpdateable {
 
-  @Input() Model : CounterModel;
-
-  constructor(public gameStateService : GameStateService) { }
+  constructor(public gameStateManager : GameStateManager, private counterService : CounterService) { }
 
   ngOnInit() {
-    this.gameStateService.RegisterUpdateable(this);
+    this.gameStateManager.RegisterUpdateable(this);
   }
 
   Reset():void {};

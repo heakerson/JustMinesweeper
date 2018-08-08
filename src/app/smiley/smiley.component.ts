@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SmileyModel } from './SmillyModel';
 import { IUpdateable } from '../Interfaces/IUpdateable';
-import { GameStateService } from '../Services/game-state.service';
+import { GameStateManager } from '../Services/game-state.service';
 import { GameStatus } from '../board/GameStatus';
 
 @Component({
@@ -13,10 +13,10 @@ export class SmileyComponent implements OnInit, IUpdateable {
 
   @Input() Model : SmileyModel;
 
-  constructor(public gameStateService : GameStateService) { }
+  constructor(public gameStateManager : GameStateManager) { }
 
   ngOnInit() {
-    this.gameStateService.RegisterUpdateable(this);
+    this.gameStateManager.RegisterUpdateable(this);
   }
 
   Reset():void {};
