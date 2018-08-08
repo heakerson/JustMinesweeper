@@ -3,7 +3,7 @@ TODO:
 - Refactor!
     Step 1: Create Services for all for all of the components and remove all logic from the models
         -DONE counter
-        -timer
+        -DONE timer
         -smiley
         -stats?
         -cell
@@ -18,6 +18,10 @@ TODO:
         -grid
         -board
     Step 3. Delete all the services
+
+    BUGS:
+        - A new game must set the mine counter the first time it's opened
+        - New Game button seems to be triggering pause
 
     - I think I need to start moving as much logic as possible to the actual state change methods in 
     - UNCOMMENT OUT THE REGISTRATION OF THE COMPONENTS

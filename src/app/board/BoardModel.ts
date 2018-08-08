@@ -1,6 +1,6 @@
 import { GridModel } from "../grid/GridModel";
 // import { CounterModel } from "../counter/CounterModel";
-import { TimerModel } from "../timer/TimerModel";
+// import { TimerModel } from "../timer/TimerModel";
 import { DifficultyType, Difficulty } from "../new-game/DifficultyType";
 import { CellModel } from "../cell/CellModel";
 import { GameStatus } from "./GameStatus";
@@ -9,12 +9,13 @@ import { SmileyModel } from "../smiley/SmillyModel";
 import { GameStateManager } from "../Services/game-state.service";
 import { BoardService } from "../Services/board.service";
 import { CounterService } from "../counter/counter.service";
+import { TimerService } from "../timer/timer.service";
 
 export class BoardModel{
 
     Grid : GridModel;
     // Counter : CounterModel;
-    Timer : TimerModel = new TimerModel(this);
+    // Timer : TimerModel = new TimerModel(this);
     Smiley : SmileyModel = new SmileyModel(this);
     Difficulty : Difficulty;
     Flags : number = 0;
@@ -28,12 +29,14 @@ export class BoardModel{
         public Stats : StatsService, 
         private gameStateService : GameStateManager,
         private boardService : BoardService,
-        private counterService : CounterService
+        private counterService : CounterService,
+        private timerService : TimerService
     )
     {
         this.Difficulty = new Difficulty(difficulty);
         this.Grid = new GridModel(this.Difficulty.Rows, this.Difficulty.Columns, this);
         // this.Counter = new CounterModel(this.Difficulty.MineCount);
+        this.gameStateService.NewGame(difficulty);
 
         document.addEventListener("contextmenu", function (e) {
             e.preventDefault();
@@ -43,7 +46,7 @@ export class BoardModel{
     public Reset(){
 
         if(!this.StatsLogged){
-            this.Stats.Update(this, this.Timer, false);
+            this.Stats.Update(this, this.timerService, false);
         }
 
         this.TogglePause();
@@ -54,19 +57,19 @@ export class BoardModel{
         this.StatsLogged = false;
         this.FlaggedCells = [];
 
-        this.Timer.Reset();
+        this.timerService.Reset();
         this.counterService.Reset(this.Difficulty.MineCount);
         this.Grid.Reset();
     }
 
     public Stop(){
-        this.Timer.Stop();
+        this.timerService.Stop();
         this.GameStatus = GameStatus.Stopped;
     }
 
     public TogglePause(){
         if(this.GameStatus == GameStatus.Started){
-            this.Timer.Stop();
+            this.timerService.Stop();
             this.GameStatus = GameStatus.Paused;
             this.Grid.Pause();
         }
@@ -79,21 +82,21 @@ export class BoardModel{
     }
 
     public Start(){
-        this.Timer.Start();
+        this.timerService.Start();
         this.GameStatus = GameStatus.Started;
     }
 
     public Win(){
         this.Stop();
         this.GameStatus = GameStatus.Win;
-        this.Stats.Update(this, this.Timer, true);
+        this.Stats.Update(this, this.timerService, true);
     }
 
     public Lose(){
         this.Stop();
         this.GameStatus = GameStatus.Lose;
         this.Grid.RevealMines();
-        this.Stats.Update(this, this.Timer, false);
+        this.Stats.Update(this, this.timerService, false);
     }
 
     public UpdateLocatedMines(cell : CellModel){

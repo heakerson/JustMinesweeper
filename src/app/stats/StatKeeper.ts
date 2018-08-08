@@ -1,5 +1,6 @@
-import { TimerModel } from "../timer/TimerModel";
+// import { TimerModel } from "../timer/TimerModel";
 import { DifficultyType } from "../new-game/DifficultyType";
+import { TimerService } from "../timer/timer.service";
 
 export class StatKeeper{
 
@@ -35,7 +36,7 @@ export class StatKeeper{
     }
 
 
-    public UpdateStats(timer : TimerModel, win : boolean){
+    public UpdateStats(timer : TimerService, win : boolean){
 
         this.Attempted++;
         

@@ -8,6 +8,7 @@ import { GameStatus } from './GameStatus';
 import { IUpdateable } from '../Interfaces/IUpdateable';
 import { BoardService } from '../Services/board.service';
 import { CounterService } from '../counter/counter.service';
+import { TimerService } from '../timer/timer.service';
 
 @Component({
   selector: 'app-board',
@@ -23,14 +24,15 @@ export class BoardComponent implements OnInit, IUpdateable {
     private Stats : StatsService, 
     public gameStateManager : GameStateManager,
     private boardService : BoardService,
-    private counterService : CounterService
+    private counterService : CounterService,
+    private timerService : TimerService
   ) {}
 
   ngOnInit() {
 
     this.route.paramMap.subscribe(params => {
       let difficulty : DifficultyType = <DifficultyType>params.get('difficulty');
-      this.Model = new BoardModel(difficulty, this.Stats, this.gameStateManager, this.boardService, this.counterService);
+      this.Model = new BoardModel(difficulty, this.Stats, this.gameStateManager, this.boardService, this.counterService, this.timerService);
     });
 
     this.gameStateManager.RegisterUpdateable(this);
