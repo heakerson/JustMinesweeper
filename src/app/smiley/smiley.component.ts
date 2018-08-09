@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { SmileyModel } from './SmillyModel';
+// import { SmileyModel } from './SmillyModel';
 import { IUpdateable } from '../Interfaces/IUpdateable';
 import { GameStateManager } from '../Services/game-state.service';
 import { GameStatus } from '../board/GameStatus';
@@ -11,7 +11,7 @@ import { GameStatus } from '../board/GameStatus';
 })
 export class SmileyComponent implements OnInit, IUpdateable {
 
-  @Input() Model : SmileyModel;
+  // @Input() Model : SmileyModel;
 
   constructor(public gameStateManager : GameStateManager) { }
 

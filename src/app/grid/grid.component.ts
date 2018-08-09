@@ -19,7 +19,9 @@ export class GridComponent implements OnInit, IUpdateable {
     this.gameStateManager.RegisterUpdateable(this);
   }
 
-  Reset():void {};
+  Reset():void {
+    this.Model.Flags = 0;
+  };
   Start():void {};
   Stop():void {};
   Pause():void {};

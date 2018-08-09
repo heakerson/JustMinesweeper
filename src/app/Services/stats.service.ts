@@ -4,6 +4,7 @@ import { StatKeeper } from '../stats/StatKeeper';
 import { BoardModel } from '../board/BoardModel';
 import { DifficultyType } from '../new-game/DifficultyType';
 import { TimerService } from '../timer/timer.service';
+import { GameStateManager } from './game-state.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,19 +15,21 @@ export class StatsService {
   public Intermediate : StatKeeper = new StatKeeper(DifficultyType.Intermediate);
   public Expert : StatKeeper = new StatKeeper(DifficultyType.Expert);
 
+  constructor(private gameStateManager : GameStateManager){}
+
   public Update(board : BoardModel, timerService : TimerService, win : boolean){
-    switch(board.Difficulty.Type){
+    switch(this.gameStateManager.Difficulty.Type){
         case DifficultyType.Easy:
             this.Beginner.UpdateStats(timerService, win);
-            board.StatsLogged = true;
+            this.gameStateManager.StatsLogged = true;
             break;
         case DifficultyType.Intermediate:
             this.Intermediate.UpdateStats(timerService, win);
-            board.StatsLogged = true;
+            this.gameStateManager.StatsLogged = true;
             break;
         case DifficultyType.Expert:
             this.Expert.UpdateStats(timerService, win);
-            board.StatsLogged = true;
+            this.gameStateManager.StatsLogged = true;
             break;
     }
   }

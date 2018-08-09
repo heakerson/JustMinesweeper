@@ -2,19 +2,28 @@ import { Injectable } from '@angular/core';
 import { GameStatus } from '../board/GameStatus';
 import { IUpdateable } from '../Interfaces/IUpdateable';
 import { Difficulty, DifficultyType } from '../new-game/DifficultyType';
+import { CellModel } from '../cell/CellModel';
 
 @Injectable({
   providedIn: 'root'
 })
-export class GameStateManager {
+export class GameStateManager implements IUpdateable {
 
   public GameStatus : GameStatus = GameStatus.Reset;
   public Difficulty : Difficulty = new Difficulty(DifficultyType.Easy);
+  public MouseDown : boolean = false;
+  public FlaggedCells : CellModel[] = [];
+  public MinesLocated : number = 0;
   private updateables : IUpdateable[] = [];
+  public StatsLogged : boolean = false;
 
   // private handlers : { (gameState: GameStatus): void; } [] = [];
 
   constructor() {}
+
+  ngOnInit(): void {
+    this.RegisterUpdateable(this);
+  }
 
   public SetState(status : GameStatus){
     // this.handlers.forEach(handler => handler(status));
@@ -55,6 +64,25 @@ export class GameStateManager {
 
   public RegisterUpdateable(updateable : IUpdateable){
     this.updateables.push(updateable);
+  }
+
+  Reset():void {
+    this.FlaggedCells = [];
+  };
+  Start():void {};
+  Stop():void {};
+  Pause():void {};
+  Win():void {};
+  Lose():void {};  
+
+  public GetFlaggedCount() : number{
+    let count : number = 0;
+    for(let flag of this.FlaggedCells){
+        if(flag.IsFlagged){
+            count++;
+        }
+    }
+    return count;
   }
 
 }

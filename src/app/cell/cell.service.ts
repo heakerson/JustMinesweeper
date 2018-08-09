@@ -1,0 +1,125 @@
+import { Injectable } from '@angular/core';
+import { CellModel } from './CellModel';
+import { GameStateManager } from '../Services/game-state.service';
+import { GameStatus } from '../board/GameStatus';
+import { GridService } from '../grid/grid.service';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CellService {
+
+  constructor(private gameStateManager : GameStateManager, private gridService : GridService) { }
+
+  public ClickCell(model : CellModel){
+
+    if(this.IsClickable(model)){
+
+      model.IsSelected = true;
+        
+        if(this.gameStateManager.GameStatus == GameStatus.Reset){
+          model.Grid.GenerateMines(this.gameStateManager.Difficulty.MineCount, model.Row, model.Column);
+          model.Grid.Board.Start();
+        }
+
+        model.Count = this.GetAdjacentMineCount(model);
+        
+        if(model.IsMine){
+          model.Grid.Board.Lose();
+        }
+        else{
+            if(model.Count == 0){
+                for(let cell of model.AdjacentCells){
+                    if(!cell.IsMine && !cell.IsSelected){
+                        this.ClickCell(cell);
+                    }
+                }
+            }
+        }
+    }
+  }
+
+  public RightClickCell(model : CellModel){
+
+    if(this.IsRightClickable(model)){
+
+      model.IsFlagged = !model.IsFlagged;
+
+      if(this.gameStateManager.GameStatus == GameStatus.Reset){
+        model.Grid.GenerateMines(this.gameStateManager.Difficulty.MineCount, model.Row, model.Column);
+        model.Grid.Board.Start();
+      }
+
+      model.Grid.UpdateLocatedMines(model);
+
+    }
+
+  }
+
+  public IsClickable(model : CellModel) : boolean{
+    return !model.IsSelected && 
+            !model.IsFlagged &&
+            (this.gameStateManager.GameStatus == GameStatus.Reset || this.gameStateManager.GameStatus == GameStatus.Started)
+  }
+
+  public IsRightClickable(model : CellModel) : boolean{
+    return !model.IsSelected && 
+            (this.gameStateManager.GameStatus == GameStatus.Reset || this.gameStateManager.GameStatus == GameStatus.Started)
+  }
+
+  public MouseDown(model : CellModel){
+    if(this.IsClickable(model) || this.IsRightClickable(model)){
+        this.gameStateManager.MouseDown = true;
+    }
+  }
+
+  public MouseUp(model : CellModel){
+      this.gameStateManager.MouseDown = false;
+  }
+
+  public GetAdjacentCells(model : CellModel) : CellModel[]{
+    model.AdjacentCells = [];
+    
+    for(let location of model.AdjancentCellLocations){
+        let cell : CellModel = model.Grid.GetCell(location[0], location[1]);
+        model.AdjacentCells.push(cell);
+    }
+
+    return model.AdjacentCells;
+}
+
+public GetAdjacentMineCount(model : CellModel) : number{
+
+    let count : number = 0;
+    let adjCells : CellModel[] = this.GetAdjacentCells(model);
+    
+    for(let cell of adjCells){
+        if(cell.IsMine){
+            count++;
+        }
+    }
+
+    return count;
+  }
+
+  public RevealMineStatus(model : CellModel){
+    if(model.IsMine && !model.IsSelected){
+      model.IsRevealed = true;
+    }
+    else if(!model.IsMine && model.IsFlagged){
+      model.IsRevealed = true;
+    }
+  }
+
+  public Pause(model : CellModel){
+    model.IsPaused = !model.IsPaused;
+  }
+
+  public Reset(model : CellModel){
+    model.IsSelected = false;
+    model.IsMine = false;
+    model.IsFlagged = false;
+    model.Count = 0;
+    model.IsRevealed = false;
+  }
+}

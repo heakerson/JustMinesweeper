@@ -1,5 +1,7 @@
 import { CellModel } from "../cell/CellModel";
 import { BoardModel } from "../board/BoardModel";
+import { GameStateManager } from "../Services/game-state.service";
+import { CellService } from "../cell/cell.service";
 
 export class GridModel{
 
@@ -10,9 +12,9 @@ export class GridModel{
     public Columns : number = 0;
     public MinesLocated : number = 0;
     public MineCells : CellModel[];
-    public MouseDown : boolean = false;
+    public Flags : number = 0;
 
-    constructor(rows : number, columns : number, board : BoardModel){
+    constructor(rows : number, columns : number, board : BoardModel, private gameStateManager : GameStateManager, private cellService : CellService){
         this.Board = board;
         this.Rows = rows;
         this.Columns = columns;
@@ -28,7 +30,7 @@ export class GridModel{
             let row : CellModel[] = [];
 
             for(let j = 0; j < columns; j++){
-                let cell : CellModel = new CellModel(this, i, j);
+                let cell : CellModel = new CellModel(this, i, j, this.gameStateManager, this.cellService);
                 row.push(cell);
             }
 
@@ -98,7 +100,7 @@ export class GridModel{
     public Reset(){
         for(let row of this.CellArray){
             for(let cell of row){
-                cell.Reset();
+                this.cellService.Reset(cell);
             }
         }
     }
@@ -106,12 +108,12 @@ export class GridModel{
     public RevealMines(){
 
         for(let cell of this.MineCells){
-            cell.RevealMineStatus();
+            this.cellService.RevealMineStatus(cell);
         }
 
-        for(let cell of this.Board.FlaggedCells){
+        for(let cell of this.gameStateManager.FlaggedCells){
             if(!cell.IsMine){
-                cell.RevealMineStatus();
+                this.cellService.RevealMineStatus(cell);
             }
         }
     }
@@ -119,7 +121,7 @@ export class GridModel{
     public Pause(){    
         for(let row of this.CellArray){
             for(let cell of row){
-                cell.Pause();
+                this.cellService.Pause(cell);
             }
         }
     }

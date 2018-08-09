@@ -5,38 +5,40 @@ import { DifficultyType, Difficulty } from "../new-game/DifficultyType";
 import { CellModel } from "../cell/CellModel";
 import { GameStatus } from "./GameStatus";
 import { StatsService } from "../Services/stats.service";
-import { SmileyModel } from "../smiley/SmillyModel";
+// import { SmileyModel } from "../smiley/SmillyModel";
 import { GameStateManager } from "../Services/game-state.service";
 import { BoardService } from "../Services/board.service";
 import { CounterService } from "../counter/counter.service";
 import { TimerService } from "../timer/timer.service";
+import { CellService } from "../cell/cell.service";
 
 export class BoardModel{
 
     Grid : GridModel;
     // Counter : CounterModel;
     // Timer : TimerModel = new TimerModel(this);
-    Smiley : SmileyModel = new SmileyModel(this);
-    Difficulty : Difficulty;
+    // Smiley : SmileyModel = new SmileyModel(this);
+    //Difficulty : Difficulty;
     Flags : number = 0;
-    MinesLocated : number = 0;
-    GameStatus : GameStatus = GameStatus.Reset;
-    FlaggedCells : CellModel[] = [];
-    StatsLogged : boolean = false;
+    //MinesLocated : number = 0;
+    //GameStatus : GameStatus = GameStatus.Reset;
+    //FlaggedCells : CellModel[] = [];
+    //StatsLogged : boolean = false;
 
     constructor(
         difficulty : DifficultyType, 
         public Stats : StatsService, 
-        private gameStateService : GameStateManager,
+        private gameStateManager : GameStateManager,
         private boardService : BoardService,
         private counterService : CounterService,
-        private timerService : TimerService
+        private timerService : TimerService,
+        private cellService : CellService
     )
     {
-        this.Difficulty = new Difficulty(difficulty);
-        this.Grid = new GridModel(this.Difficulty.Rows, this.Difficulty.Columns, this);
+        this.gameStateManager.Difficulty = new Difficulty(difficulty);
+        this.Grid = new GridModel(this.gameStateManager.Difficulty.Rows, this.gameStateManager.Difficulty.Columns, this, this.gameStateManager, this.cellService);
         // this.Counter = new CounterModel(this.Difficulty.MineCount);
-        this.gameStateService.NewGame(difficulty);
+        this.gameStateManager.NewGame(difficulty);
 
         document.addEventListener("contextmenu", function (e) {
             e.preventDefault();
@@ -45,56 +47,56 @@ export class BoardModel{
 
     public Reset(){
 
-        if(!this.StatsLogged){
+        if(!this.gameStateManager.StatsLogged){
             this.Stats.Update(this, this.timerService, false);
         }
 
         this.TogglePause();
 
-        this.GameStatus = GameStatus.Reset;
+        this.gameStateManager.GameStatus = GameStatus.Reset;
         this.Flags = 0;
-        this.MinesLocated = 0;
-        this.StatsLogged = false;
-        this.FlaggedCells = [];
+        this.gameStateManager.MinesLocated = 0;
+        this.gameStateManager.StatsLogged = false;
 
         this.timerService.Reset();
-        this.counterService.Reset(this.Difficulty.MineCount);
+        this.counterService.Reset(this.gameStateManager.Difficulty.MineCount);
         this.Grid.Reset();
+        this.gameStateManager.SetState(GameStatus.Reset);
     }
 
     public Stop(){
         this.timerService.Stop();
-        this.GameStatus = GameStatus.Stopped;
+        this.gameStateManager.GameStatus = GameStatus.Stopped;
     }
 
     public TogglePause(){
-        if(this.GameStatus == GameStatus.Started){
+        if(this.gameStateManager.GameStatus == GameStatus.Started){
             this.timerService.Stop();
-            this.GameStatus = GameStatus.Paused;
+            this.gameStateManager.GameStatus = GameStatus.Paused;
             this.Grid.Pause();
         }
-        else if(this.GameStatus == GameStatus.Paused){
+        else if(this.gameStateManager.GameStatus == GameStatus.Paused){
             this.Start();
             this.Grid.Pause();
         }
 
-        this.gameStateService.SetState(this.GameStatus);
+        this.gameStateManager.SetState(this.gameStateManager.GameStatus);
     }
 
     public Start(){
         this.timerService.Start();
-        this.GameStatus = GameStatus.Started;
+        this.gameStateManager.GameStatus = GameStatus.Started;
     }
 
     public Win(){
         this.Stop();
-        this.GameStatus = GameStatus.Win;
+        this.gameStateManager.GameStatus = GameStatus.Win;
         this.Stats.Update(this, this.timerService, true);
     }
 
     public Lose(){
         this.Stop();
-        this.GameStatus = GameStatus.Lose;
+        this.gameStateManager.GameStatus = GameStatus.Lose;
         this.Grid.RevealMines();
         this.Stats.Update(this, this.timerService, false);
     }
@@ -104,11 +106,11 @@ export class BoardModel{
         if(cell.IsFlagged){
 
             if(!this.IsInFlaggedList(cell)){
-                this.FlaggedCells.push(cell);
+                this.gameStateManager.FlaggedCells.push(cell);
             }
 
             if(cell.IsMine){
-                this.MinesLocated++;
+                this.gameStateManager.MinesLocated++;
             }
 
             this.counterService.Decrement();
@@ -117,7 +119,7 @@ export class BoardModel{
         else{
 
             if(cell.IsMine){
-                this.MinesLocated--;
+                this.gameStateManager.MinesLocated--;
             }
 
             this.counterService.Incrememnt();
@@ -128,29 +130,19 @@ export class BoardModel{
         // console.log("minesLocated: " + this.MinesLocated);
         // console.log("flagged count: " + this.GetFlaggedCount());
 
-        if(this.MinesLocated == this.Difficulty.MineCount && this.GetFlaggedCount() == this.Difficulty.MineCount){
+        if(this.gameStateManager.MinesLocated == this.gameStateManager.Difficulty.MineCount && this.gameStateManager.GetFlaggedCount() == this.gameStateManager.Difficulty.MineCount){
             this.Win();
         }
     }
 
     public IsInFlaggedList(cell : CellModel) : boolean{
 
-        for(let aCell of this.FlaggedCells){
+        for(let aCell of this.gameStateManager.FlaggedCells){
             if(aCell.Id == cell.Id){
                 return true;
             }
         }
 
         return false;
-    }
-
-    public GetFlaggedCount() : number{
-        let count : number = 0;
-        for(let flag of this.FlaggedCells){
-            if(flag.IsFlagged){
-                count++;
-            }
-        }
-        return count;
     }
 }

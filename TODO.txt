@@ -4,9 +4,9 @@ TODO:
     Step 1: Create Services for all for all of the components and remove all logic from the models
         -DONE counter
         -DONE timer
-        -smiley
+        -DONE smiley
         -stats?
-        -cell
+        -DONE cell
         -grid
         -board
     Step 2. Move the logic out of the services and back in to the component state methods
@@ -22,6 +22,9 @@ TODO:
     BUGS:
         - A new game must set the mine counter the first time it's opened
         - New Game button seems to be triggering pause
+        - Can't click pause anymore
+        - Winning is not highlighting the bombs green
+        - After the grid has been build, GetAdjacentCells should be called for all cells all at once and then not called again
 
     - I think I need to start moving as much logic as possible to the actual state change methods in 
     - UNCOMMENT OUT THE REGISTRATION OF THE COMPONENTS
