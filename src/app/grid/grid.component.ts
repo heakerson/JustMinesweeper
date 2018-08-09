@@ -26,5 +26,7 @@ export class GridComponent implements OnInit, IUpdateable {
   Stop():void {};
   Pause():void {};
   Win():void {};
-  Lose():void {};
+  Lose():void {
+    this.Model.RevealMines();
+  };
 }

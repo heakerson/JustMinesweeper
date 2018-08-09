@@ -8,8 +8,8 @@
           <app-timer></app-timer>
           <app-counter></app-counter>
           <div class="d-flex flex-row mt-2">
-              <button (click)="Model.Reset()" class="btn btn-outline-primary">NEW GAME</button>
-              <button (click)="Model.TogglePause()" [disabled]="Model.GameStatus != 5 && Model.GameStatus !=1" class="btn btn-outline-primary ml-2 w-50">
+              <button (click)="NewGame()" class="btn btn-outline-primary">NEW GAME</button>
+              <button (click)="TogglePause()" [disabled]="Model.GameStatus != 5 && Model.GameStatus !=1" class="btn btn-outline-primary ml-2 w-50">
             
                   <div *ngIf="Model.GameStatus == 5; else pause" class="">
                     <span>START</span>
@@ -25,40 +25,7 @@
       
                 </button>
           </div>
-          <!-- <button (click)="Model.Reset()" class="btn btn-outline-primary align-self-end w-100 mt-2">NEW GAME</button>
-          <button (click)="Model.TogglePause()" class="btn btn-outline-primary align-self-end w-100 mt-2">
-            
-            <div *ngIf="Model.GameStatus == 5; else pause" class="">
-              <span>START</span>
-              <i class="fas fa-play ml-2"></i>
-            </div>
-
-            <ng-template #pause>
-              <div class="">
-                <span>PAUSE</span>
-                <i class="fas fa-pause ml-2"></i>
-              </div>
-            </ng-template>
-
-          </button> -->
         </div>
       </div>   
   </div>
 </div>
-
-<!-- <div id="BoardContainer" class="d-flex flex-column align-content-center">
-  <div class="flex-column">
-      <div class="d-flex flex-row justify-content-center pt-5">
-        <app-grid [Model]="Model.Grid"></app-grid>
-        <div id="InfoBar" class="flex-column ml-3">
-          <app-timer [Model]="Model.Timer"></app-timer>
-          <app-counter [Model]="Model.Counter"></app-counter>
-        </div>
-      </div>
-  </div>
-
-    <div class="flex-row pt-3">
-      <button (click)="Model.Reset()" class="btn btn-outline-primary mr-3">NEW GAME</button>
-      <button routerLink="/New" class="btn btn-outline-primary mr-3">BACK TO MENU</button>
-    </div>
-</div> -->

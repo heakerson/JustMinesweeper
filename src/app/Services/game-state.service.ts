@@ -17,22 +17,21 @@ export class GameStateManager implements IUpdateable {
   private updateables : IUpdateable[] = [];
   public StatsLogged : boolean = false;
 
-  // private handlers : { (gameState: GameStatus): void; } [] = [];
-
   constructor() {}
 
   ngOnInit(): void {
     this.RegisterUpdateable(this);
   }
-
-  public SetState(status : GameStatus){
-    // this.handlers.forEach(handler => handler(status));
-    this.updateables.forEach(updateable => this.InvokeStateChange(updateable, status));
-  }
-
+  
   public NewGame(difficultyType : DifficultyType){
     this.Difficulty = new Difficulty(difficultyType);
     this.SetState(GameStatus.Reset);
+  }
+
+  public SetState(status : GameStatus){
+    this.GameStatus = status;
+      //console.log("SetState: " + status.toString());
+    this.updateables.forEach(updateable => this.InvokeStateChange(updateable, status));
   }
 
   private InvokeStateChange(updateable : IUpdateable, status : GameStatus){
@@ -58,16 +57,15 @@ export class GameStateManager implements IUpdateable {
     }
   }
 
-  // public RegisterHandler(handler : {(gameState : GameStatus)} ){
-  //   this.handlers.push(handler);
-  // }
-
   public RegisterUpdateable(updateable : IUpdateable){
     this.updateables.push(updateable);
   }
 
   Reset():void {
     this.FlaggedCells = [];
+    this.GameStatus = GameStatus.Reset;
+    this.MinesLocated = 0;
+    this.StatsLogged = false;
   };
   Start():void {};
   Stop():void {};

@@ -93,16 +93,16 @@ export class GridModel{
         return cell;
     }
 
-    public UpdateLocatedMines(flaggedCell : CellModel){
-        this.Board.UpdateLocatedMines(flaggedCell);
-    }
+    // public UpdateLocatedMines(flaggedCell : CellModel){
+    //     this.Board.UpdateLocatedMines(flaggedCell);
+    // }
 
     public Reset(){
-        for(let row of this.CellArray){
-            for(let cell of row){
-                this.cellService.Reset(cell);
-            }
-        }
+        // for(let row of this.CellArray){
+        //     for(let cell of row){
+        //         this.cellService.Reset(cell);
+        //     }
+        // }
     }
 
     public RevealMines(){

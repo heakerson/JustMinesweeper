@@ -3,13 +3,14 @@ import { CellModel } from './CellModel';
 import { GameStateManager } from '../Services/game-state.service';
 import { GameStatus } from '../board/GameStatus';
 import { GridService } from '../grid/grid.service';
+import { CounterService } from '../counter/counter.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CellService {
 
-  constructor(private gameStateManager : GameStateManager, private gridService : GridService) { }
+  constructor(private gameStateManager : GameStateManager, private counterService : CounterService) { }
 
   public ClickCell(model : CellModel){
 
@@ -25,7 +26,8 @@ export class CellService {
         model.Count = this.GetAdjacentMineCount(model);
         
         if(model.IsMine){
-          model.Grid.Board.Lose();
+          this.gameStateManager.SetState(GameStatus.Lose);
+          //model.Grid.Board.Lose();
         }
         else{
             if(model.Count == 0){
@@ -50,7 +52,7 @@ export class CellService {
         model.Grid.Board.Start();
       }
 
-      model.Grid.UpdateLocatedMines(model);
+      this.counterService.UpdateLocatedMines(model);
 
     }
 

@@ -60,7 +60,9 @@ export class CellComponent implements OnInit, IUpdateable {
     this.cellService.MouseDown(this.Model);
   }
 
-  Reset():void {};
+  Reset():void {
+    this.cellService.Reset(this.Model);
+  };
   Start():void {};
   Stop():void {};
   Pause():void {};

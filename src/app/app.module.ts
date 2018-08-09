@@ -13,7 +13,6 @@ import { StatsComponent } from './stats/stats.component';
 import { StatsService } from './Services/stats.service';
 import { SmileyComponent } from './smiley/smiley.component';
 import { GameStateManager } from './Services/game-state.service';
-import { BoardService } from './Services/board.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +33,6 @@ import { BoardService } from './Services/board.service';
   providers: [
     StatsService, 
     GameStateManager,
-    BoardService,
   ],
   bootstrap: [AppComponent]
 })

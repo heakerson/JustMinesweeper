@@ -17,7 +17,7 @@ export class StatsService {
 
   constructor(private gameStateManager : GameStateManager){}
 
-  public Update(board : BoardModel, timerService : TimerService, win : boolean){
+  public Update(timerService : TimerService, win : boolean){
     switch(this.gameStateManager.Difficulty.Type){
         case DifficultyType.Easy:
             this.Beginner.UpdateStats(timerService, win);

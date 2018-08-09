@@ -20,11 +20,23 @@ export class TimerComponent implements OnInit, IUpdateable {
     this.gameStateManager.RegisterUpdateable(this);
   }
 
-  Reset():void {};
-  Start():void {};
-  Stop():void {};
-  Pause():void {};
-  Win():void {};
-  Lose():void {};  
+  Reset():void {
+    this.timerService.Reset();
+  };
+  Start():void {
+    this.timerService.Start();
+  };
+  Stop():void {
+    this.timerService.Stop();
+  };
+  Pause():void {
+    this.timerService.Stop();
+  };
+  Win():void {
+    this.timerService.Stop();
+  };
+  Lose():void {
+    this.timerService.Stop();
+  };  
 
 }

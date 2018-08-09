@@ -23,7 +23,11 @@ export class SmileyComponent implements OnInit, IUpdateable {
   Start():void {};
   Stop():void {};
   Pause():void {};
-  Win():void {};
-  Lose():void {};  
+  Win():void {
+    this.gameStateManager.GameStatus = GameStatus.Win;
+  };
+  Lose():void {
+    this.gameStateManager.GameStatus = GameStatus.Lose;
+  };  
 
 }

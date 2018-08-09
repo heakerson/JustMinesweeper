@@ -5,6 +5,7 @@ import { StatsService } from '../Services/stats.service';
 import { IUpdateable } from '../Interfaces/IUpdateable';
 import { GameStatus } from '../board/GameStatus';
 import { GameStateManager } from '../Services/game-state.service';
+import { TimerService } from '../timer/timer.service';
 
 @Component({
   selector: 'app-stats',
@@ -15,17 +16,25 @@ export class StatsComponent implements OnInit, IUpdateable {
 
   // @Input() Model;
 
-  constructor(public Stats : StatsService, public gameStateManager : GameStateManager) { }
+  constructor(public Stats : StatsService, public gameStateManager : GameStateManager, private timerService : TimerService) { }
 
   ngOnInit() {
     this.gameStateManager.RegisterUpdateable(this);
   }
 
-  Reset():void {};
+  Reset():void {
+    if(!this.gameStateManager.StatsLogged){
+      this.Stats.Update(this.timerService, false);
+    }
+  };
   Start():void {};
   Stop():void {};
   Pause():void {};
-  Win():void {};
-  Lose():void {};  
+  Win():void {
+    this.Stats.Update(this.timerService, true);
+  };
+  Lose():void {
+    this.Stats.Update(this.timerService, false);
+  };  
 
 }

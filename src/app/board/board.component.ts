@@ -6,7 +6,6 @@ import { StatsService } from '../Services/stats.service';
 import { GameStateManager } from '../Services/game-state.service';
 import { GameStatus } from './GameStatus';
 import { IUpdateable } from '../Interfaces/IUpdateable';
-import { BoardService } from '../Services/board.service';
 import { CounterService } from '../counter/counter.service';
 import { TimerService } from '../timer/timer.service';
 import { CellService } from '../cell/cell.service';
@@ -24,7 +23,6 @@ export class BoardComponent implements OnInit, IUpdateable {
     private route : ActivatedRoute, 
     private Stats : StatsService, 
     public gameStateManager : GameStateManager,
-    private boardService : BoardService,
     private counterService : CounterService,
     private timerService : TimerService,
     private cellService : CellService
@@ -34,17 +32,32 @@ export class BoardComponent implements OnInit, IUpdateable {
 
     this.route.paramMap.subscribe(params => {
       let difficulty : DifficultyType = <DifficultyType>params.get('difficulty');
-      this.Model = new BoardModel(difficulty, this.Stats, this.gameStateManager, this.boardService, this.counterService, this.timerService, this.cellService);
+      this.Model = new BoardModel(difficulty, this.Stats, this.gameStateManager, this.counterService, this.timerService, this.cellService);
     });
 
     this.gameStateManager.RegisterUpdateable(this);
   }
 
+  TogglePause(){
+    this.Model.TogglePause();
+  }
+
+  NewGame(){
+    this.gameStateManager.SetState(GameStatus.Reset);
+  }
+
   Reset():void {};
-  Start():void {};
+
+  Start():void {
+    this.Model.Start();
+  };
   Stop():void {};
   Pause():void {};
-  Win():void {};
-  Lose():void {};  
+  Win():void {
+    this.Model.Win();
+  };
+  Lose():void {
+    this.Model.Lose();
+  };  
 
 }

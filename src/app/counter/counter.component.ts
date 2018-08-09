@@ -18,7 +18,9 @@ export class CounterComponent implements OnInit, IUpdateable {
     this.gameStateManager.RegisterUpdateable(this);
   }
 
-  Reset():void {};
+  Reset():void {
+    this.counterService.Reset(this.gameStateManager.Difficulty.MineCount);
+  };
   Start():void {};
   Stop():void {};
   Pause():void {};
