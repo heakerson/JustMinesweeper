@@ -30,15 +30,15 @@ export class BoardModel{
         }, false);
     }
 
-    public Stop(){
-        this.gameStateManager.GameStatus = GameStatus.Stopped;
-    }
+    // public Stop(){
+    //     //this.gameStateManager.GameStatus = GameStatus.Stopped;
+    // }
 
     public TogglePause(){
         if(this.gameStateManager.GameStatus == GameStatus.Started){
             //this.timerService.Stop();
             //this.gameStateManager.GameStatus = GameStatus.Paused;
-            //this.Grid.Pause();
+            this.Grid.Pause();
             this.gameStateManager.SetState(GameStatus.Paused);
         }
         else if(this.gameStateManager.GameStatus == GameStatus.Paused){
@@ -55,12 +55,12 @@ export class BoardModel{
         this.gameStateManager.GameStatus = GameStatus.Started;
     }
 
-    public Win(){
-        this.Stop();
-    }
+    // public Win(){
+    //     this.Stop();
+    // }
 
-    public Lose(){
-        this.Stop();
+    // public Lose(){
+    //     this.Stop();
        
-    }
+    // }
 }

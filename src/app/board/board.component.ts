@@ -54,10 +54,10 @@ export class BoardComponent implements OnInit, IUpdateable {
   Stop():void {};
   Pause():void {};
   Win():void {
-    this.Model.Win();
+    //this.Model.Win();
   };
   Lose():void {
-    this.Model.Lose();
+    //this.Model.Lose();
   };  
 
 }

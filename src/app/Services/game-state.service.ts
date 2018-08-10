@@ -30,6 +30,7 @@ export class GameStateManager implements IUpdateable {
 
   public SetState(status : GameStatus){
     this.GameStatus = status;
+    this.InvokeStateChange(this, status);
       //console.log("SetState: " + status.toString());
     this.updateables.forEach(updateable => this.InvokeStateChange(updateable, status));
   }

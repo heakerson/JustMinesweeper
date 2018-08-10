@@ -9,9 +9,9 @@
           <app-counter></app-counter>
           <div class="d-flex flex-row mt-2">
               <button (click)="NewGame()" class="btn btn-outline-primary">NEW GAME</button>
-              <button (click)="TogglePause()" [disabled]="Model.GameStatus != 5 && Model.GameStatus !=1" class="btn btn-outline-primary ml-2 w-50">
+              <button (click)="TogglePause()" [disabled]="gameStateManager.GameStatus != 5 && gameStateManager.GameStatus !=1" class="btn btn-outline-primary ml-2 w-50">
             
-                  <div *ngIf="Model.GameStatus == 5; else pause" class="">
+                  <div *ngIf="gameStateManager.GameStatus == 5; else pause" class="">
                     <span>START</span>
                     <i class="fas fa-play ml-2"></i>
                   </div>
