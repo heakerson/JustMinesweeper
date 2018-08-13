@@ -30,7 +30,7 @@ export class GridModel{
             let row : CellModel[] = [];
 
             for(let j = 0; j < columns; j++){
-                let cell : CellModel = new CellModel(this, i, j, this.gameStateManager, this.cellService);
+                let cell : CellModel = new CellModel(this, i, j);
                 row.push(cell);
             }
 

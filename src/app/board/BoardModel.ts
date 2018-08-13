@@ -1,10 +1,8 @@
 import { GridModel } from "../grid/GridModel";
 import { DifficultyType, Difficulty } from "../new-game/DifficultyType";
-import { CellModel } from "../cell/CellModel";
 import { GameStatus } from "./GameStatus";
 import { StatsService } from "../Services/stats.service";
 import { GameStateManager } from "../Services/game-state.service";
-import { CounterService } from "../counter/counter.service";
 import { TimerService } from "../timer/timer.service";
 import { CellService } from "../cell/cell.service";
 
@@ -14,9 +12,7 @@ export class BoardModel{
 
     constructor(
         difficulty : DifficultyType, 
-        public Stats : StatsService, 
         private gameStateManager : GameStateManager,
-        private counterService : CounterService,
         private timerService : TimerService,
         private cellService : CellService
     )

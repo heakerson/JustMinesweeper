@@ -21,7 +21,7 @@ export class CellModel{
     public Grid : GridModel;
     public AddedToFlaggedList : boolean = false;
 
-    constructor(grid : GridModel, row : number, column : number, private gameStateManager : GameStateManager, private cellService : CellService){
+    constructor(grid : GridModel, row : number, column : number){
         this.Id = CellModel.IdIndex;
         CellModel.IdIndex++;
         this.Grid = grid;

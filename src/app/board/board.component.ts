@@ -21,9 +21,7 @@ export class BoardComponent implements OnInit, IUpdateable {
 
   constructor(
     private route : ActivatedRoute, 
-    private Stats : StatsService, 
     public gameStateManager : GameStateManager,
-    private counterService : CounterService,
     private timerService : TimerService,
     private cellService : CellService
   ) {}
@@ -32,7 +30,7 @@ export class BoardComponent implements OnInit, IUpdateable {
 
     this.route.paramMap.subscribe(params => {
       let difficulty : DifficultyType = <DifficultyType>params.get('difficulty');
-      this.Model = new BoardModel(difficulty, this.Stats, this.gameStateManager, this.counterService, this.timerService, this.cellService);
+      this.Model = new BoardModel(difficulty, this.gameStateManager, this.timerService, this.cellService);
     });
 
     this.gameStateManager.RegisterUpdateable(this);
