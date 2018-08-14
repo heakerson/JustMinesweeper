@@ -4,6 +4,7 @@ import { GameStatus } from '../board/GameStatus';
 import { IUpdateable } from '../Interfaces/IUpdateable';
 import { GameStateManager } from '../Services/game-state.service';
 import { CellService } from './cell.service';
+import { GridService } from '../grid/grid.service';
 
 @Component({
   selector: 'app-cell',
@@ -14,7 +15,7 @@ export class CellComponent implements OnInit, IUpdateable {
 
   @Input() Model : CellModel;
 
-  constructor(public gameStateManager : GameStateManager, private cellService : CellService) { }
+  constructor(public gameStateManager : GameStateManager, private cellService : CellService, private gridService : GridService) { }
 
   ngOnInit() {
     this.gameStateManager.RegisterUpdateable(this);
@@ -38,7 +39,7 @@ export class CellComponent implements OnInit, IUpdateable {
         let row : number = location[0];
         let column : number = location[1];
 
-        if(this.Model.Grid.IsValidCellLocation(row, column)){
+        if(this.gridService.IsValidCellLocation(row, column)){
             this.Model.AdjancentCellLocations.push(location)
         }
     }
@@ -62,6 +63,7 @@ export class CellComponent implements OnInit, IUpdateable {
 
   Reset():void {
     this.cellService.Reset(this.Model);
+    this.Model.IsPaused = false;
   };
   Start():void {
     this.Model.IsPaused = false;
@@ -73,6 +75,8 @@ export class CellComponent implements OnInit, IUpdateable {
   Win():void {
     this.cellService.Win(this.Model);
   };
-  Lose():void {};  
+  Lose():void {
+    this.cellService.RevealMineStatus(this.Model);
+  };  
 
 }

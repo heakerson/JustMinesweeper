@@ -19,13 +19,12 @@ export class CellModel{
     public Count : number = 0;
     public AdjancentCellLocations : number[][] = [];
     public AdjacentCells : CellModel[] = [];
-    public Grid : GridModel;
     public AddedToFlaggedList : boolean = false;
 
-    constructor(grid : GridModel, row : number, column : number){
+    constructor(row : number, column : number){
         this.Id = CellModel.IdIndex;
         CellModel.IdIndex++;
-        this.Grid = grid;
+        //this.Grid = grid;
         this.Row = row;
         this.Column = column;
     }

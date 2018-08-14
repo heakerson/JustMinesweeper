@@ -10,7 +10,7 @@ import { CounterService } from '../counter/counter.service';
 })
 export class CellService {
 
-  constructor(private gameStateManager : GameStateManager, private counterService : CounterService) { }
+  constructor(private gameStateManager : GameStateManager, private counterService : CounterService, private gridService : GridService) { }
 
   public ClickCell(model : CellModel){
 
@@ -19,8 +19,9 @@ export class CellService {
       model.IsSelected = true;
         
         if(this.gameStateManager.GameStatus == GameStatus.Reset){
-          model.Grid.GenerateMines(this.gameStateManager.Difficulty.MineCount, model.Row, model.Column);
-          model.Grid.Board.Start();
+          this.gridService.GenerateMines(model.Row, model.Column);
+          this.gameStateManager.SetState(GameStatus.Started);
+          //model.Grid.Board.Start();
         }
 
         model.Count = this.GetAdjacentMineCount(model);
@@ -48,8 +49,9 @@ export class CellService {
       model.IsFlagged = !model.IsFlagged;
 
       if(this.gameStateManager.GameStatus == GameStatus.Reset){
-        model.Grid.GenerateMines(this.gameStateManager.Difficulty.MineCount, model.Row, model.Column);
-        model.Grid.Board.Start();
+        this.gridService.GenerateMines(model.Row, model.Column);
+        this.gameStateManager.SetState(GameStatus.Started);
+        //model.Grid.Board.Start();
       }
 
       this.counterService.UpdateLocatedMines(model);
@@ -83,7 +85,7 @@ export class CellService {
     model.AdjacentCells = [];
     
     for(let location of model.AdjancentCellLocations){
-        let cell : CellModel = model.Grid.GetCell(location[0], location[1]);
+        let cell : CellModel = this.gridService.GetCell(location[0], location[1]);
         model.AdjacentCells.push(cell);
     }
 

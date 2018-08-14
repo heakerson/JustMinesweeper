@@ -3,6 +3,7 @@ import { GridModel } from './GridModel';
 import { IUpdateable } from '../Interfaces/IUpdateable';
 import { GameStateManager } from '../Services/game-state.service';
 import { GameStatus } from '../board/GameStatus';
+import { GridService } from './grid.service';
 
 @Component({
   selector: 'app-grid',
@@ -13,7 +14,7 @@ export class GridComponent implements OnInit, IUpdateable {
 
   @Input() Model : GridModel;
 
-  constructor(public gameStateManager : GameStateManager) {}
+  constructor(public gameStateManager : GameStateManager, private gridService : GridService) {}
 
   ngOnInit() {
     this.gameStateManager.RegisterUpdateable(this);
@@ -26,7 +27,5 @@ export class GridComponent implements OnInit, IUpdateable {
   Stop():void {};
   Pause():void {};
   Win():void {};
-  Lose():void {
-    this.Model.RevealMines();
-  };
+  Lose():void {};
 }
