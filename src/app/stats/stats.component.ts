@@ -16,7 +16,7 @@ export class StatsComponent implements OnInit, IUpdateable {
 
   // @Input() Model;
 
-  constructor(public Stats : StatsService, public gameStateManager : GameStateManager, private timerService : TimerService) { }
+  constructor(private Stats : StatsService, private gameStateManager : GameStateManager, private timerService : TimerService) { }
 
   ngOnInit() {
     this.gameStateManager.RegisterUpdateable(this);

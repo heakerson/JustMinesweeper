@@ -5,7 +5,6 @@ import { BoardModel } from './BoardModel';
 import { GameStateManager } from '../Services/game-state.service';
 import { GameStatus } from './GameStatus';
 import { IUpdateable } from '../Interfaces/IUpdateable';
-import { CellService } from '../cell/cell.service';
 import { GridService } from '../grid/grid.service';
 
 @Component({
@@ -20,7 +19,6 @@ export class BoardComponent implements OnInit, IUpdateable {
   constructor(
     private route : ActivatedRoute, 
     public gameStateManager : GameStateManager,
-    private cellService : CellService,
     private gridService : GridService
   ) {}
 
@@ -29,7 +27,7 @@ export class BoardComponent implements OnInit, IUpdateable {
     this.route.paramMap.subscribe(params => {
       let difficulty : DifficultyType = <DifficultyType>params.get('difficulty');
       this.gameStateManager.Difficulty = new Difficulty(difficulty);
-      this.Model = new BoardModel(this.gameStateManager, this.cellService, this.gridService);
+      this.Model = new BoardModel(this.gameStateManager, this.gridService);
     });
 
     document.addEventListener("contextmenu", function (e) {

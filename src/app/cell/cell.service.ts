@@ -21,14 +21,12 @@ export class CellService {
         if(this.gameStateManager.GameStatus == GameStatus.Reset){
           this.gridService.GenerateMines(model.Row, model.Column);
           this.gameStateManager.SetState(GameStatus.Started);
-          //model.Grid.Board.Start();
         }
 
         model.Count = this.GetAdjacentMineCount(model);
         
         if(model.IsMine){
           this.gameStateManager.SetState(GameStatus.Lose);
-          //model.Grid.Board.Lose();
         }
         else{
             if(model.Count == 0){
@@ -51,7 +49,6 @@ export class CellService {
       if(this.gameStateManager.GameStatus == GameStatus.Reset){
         this.gridService.GenerateMines(model.Row, model.Column);
         this.gameStateManager.SetState(GameStatus.Started);
-        //model.Grid.Board.Start();
       }
 
       this.counterService.UpdateLocatedMines(model);

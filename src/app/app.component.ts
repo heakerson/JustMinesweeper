@@ -13,7 +13,7 @@ export class AppComponent{
   
   ChildComponent : BoardComponent;
 
-  constructor(public Stats : StatsService, private gameStateManager : GameStateManager){}
+  constructor(private Stats : StatsService, private gameStateManager : GameStateManager){}
 
   onActivate(comp){
       this.ChildComponent = <BoardComponent>comp;
@@ -27,7 +27,6 @@ export class AppComponent{
 
   TogglePause(){
     if(this.ChildComponent instanceof BoardComponent){
-        //this.ChildComponent.Model.TogglePause();
       if(this.gameStateManager.GameStatus == GameStatus.Started){
         this.gameStateManager.SetState(GameStatus.Paused);
       }

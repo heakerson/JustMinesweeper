@@ -11,9 +11,7 @@ import { GameStatus } from '../board/GameStatus';
 })
 export class SmileyComponent implements OnInit, IUpdateable {
 
-  // @Input() Model : SmileyModel;
-
-  constructor(public gameStateManager : GameStateManager) { }
+  constructor(private gameStateManager : GameStateManager) { }
 
   ngOnInit() {
     this.gameStateManager.RegisterUpdateable(this);
@@ -23,11 +21,6 @@ export class SmileyComponent implements OnInit, IUpdateable {
   Start():void {};
   Stop():void {};
   Pause():void {};
-  Win():void {
-    this.gameStateManager.GameStatus = GameStatus.Win;
-  };
-  Lose():void {
-    this.gameStateManager.GameStatus = GameStatus.Lose;
-  };  
-
+  Win():void {};
+  Lose():void {};  
 }

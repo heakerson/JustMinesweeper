@@ -1,9 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-// import { TimerModel } from './TimerModel';
 import { GameStateManager } from '../Services/game-state.service';
-import { GameStatus } from '../board/GameStatus';
 import { IUpdateable } from '../Interfaces/IUpdateable';
-import { TimerService } from './timer.service';
 
 @Component({
   selector: 'app-timer',
@@ -12,31 +9,40 @@ import { TimerService } from './timer.service';
 })
 export class TimerComponent implements OnInit, IUpdateable {
 
-  // @Input() Model : TimerModel;
+  public Time : number = 0;
+  private Started : boolean = false;
 
-  constructor(public gameStateManager : GameStateManager, private timerService : TimerService) { }
+  constructor(public gameStateManager : GameStateManager) { }
 
   ngOnInit() {
+
+    setInterval(() => { 
+      if(this.Started){
+          this.Time++; 
+      }
+    }, 1000);
+
     this.gameStateManager.RegisterUpdateable(this);
   }
 
   Reset():void {
-    this.timerService.Reset();
+    this.Stop();
+    this.Time = 0;
   };
   Start():void {
-    this.timerService.Start();
+    this.Started = true;
   };
   Stop():void {
-    this.timerService.Stop();
+    this.Started = false;
   };
   Pause():void {
-    this.timerService.Stop();
+    this.Stop();
   };
   Win():void {
-    this.timerService.Stop();
+    this.Stop();
   };
   Lose():void {
-    this.timerService.Stop();
+    this.Stop();
   };  
 
 }

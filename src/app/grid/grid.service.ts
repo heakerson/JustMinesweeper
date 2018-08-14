@@ -39,7 +39,9 @@ export class GridService {
   //   }
   // }
 
-  InitCells(rows : number, columns : number){
+  InitCells(){
+    let rows : number = this.gameStateManager.Difficulty.Rows;
+    let columns : number = this.gameStateManager.Difficulty.Columns;
 
     this.CellArray = [];
 

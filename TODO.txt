@@ -1,23 +1,10 @@
 TODO:
 ==========================
-- Refactor!
-    Step 1: Create Services for all for all of the components and remove all logic from the models
-        -DONE counter
-        -DONE timer
-        -DONE smiley
-        -stats?
-        -DONE cell
-        -grid
-        -board
-    Step 2. Move the logic out of the services and back in to the component state methods
-        -counter
-        -timer
-        -smiley
-        -stats?
-        -cell
-        -grid
-        -board
-    Step 3. Delete all the services
+DO I WANT TO DO THIS? Remove timerService from the stats service and have the timer component call the stats Service update with the time
+    I could also just make it a little better
+
+- when the url changes, this triggers (in the board component), the creation of a new BoardModel, which then creates a new GridModel, which then initializes
+    the cells. Figure out how to get rid of this
 
     BUGS:
         - Right now, I'm resetting EVERY time a component is registered in the gameStateManager, which means it's taking a long time when you go to expert

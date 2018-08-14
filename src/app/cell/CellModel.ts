@@ -24,7 +24,6 @@ export class CellModel{
     constructor(row : number, column : number){
         this.Id = CellModel.IdIndex;
         CellModel.IdIndex++;
-        //this.Grid = grid;
         this.Row = row;
         this.Column = column;
     }

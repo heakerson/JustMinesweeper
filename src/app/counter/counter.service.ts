@@ -14,7 +14,6 @@ export class CounterService {
   constructor(private gameStateManager : GameStateManager){}
 
   public Reset(initCount : number){
-    console.log("resetting counter to " + initCount);
       this.Count = initCount;
   }
 

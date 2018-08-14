@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
-// import { TimerModel } from '../timer/TimerModel';
 import { StatKeeper } from '../stats/StatKeeper';
-import { BoardModel } from '../board/BoardModel';
 import { DifficultyType } from '../new-game/DifficultyType';
-import { TimerService } from '../timer/timer.service';
 import { GameStateManager } from './game-state.service';
+import { TimerService } from '../timer/timer.service';
 
 @Injectable({
   providedIn: 'root'
