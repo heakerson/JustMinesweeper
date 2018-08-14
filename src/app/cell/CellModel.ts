@@ -13,6 +13,7 @@ export class CellModel{
     public IsFlagged : boolean = false;
     public IsRevealed : boolean = false;
     public IsPaused : boolean = false;
+    public Won : boolean = false;
     public Row : number = -1;
     public Column : number = -1;
     public Count : number = 0;

@@ -60,6 +60,7 @@ export class GameStateManager implements IUpdateable {
 
   public RegisterUpdateable(updateable : IUpdateable){
     this.updateables.push(updateable);
+    this.SetState(GameStatus.Reset);
   }
 
   Reset():void {

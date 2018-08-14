@@ -123,5 +123,10 @@ public GetAdjacentMineCount(model : CellModel) : number{
     model.IsFlagged = false;
     model.Count = 0;
     model.IsRevealed = false;
+    model.Won = false;
+  }
+
+  public Win(model : CellModel){
+    model.Won = true;
   }
 }

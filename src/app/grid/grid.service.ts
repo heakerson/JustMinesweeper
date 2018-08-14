@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CellModel } from '../cell/CellModel';
+import { CellService } from '../cell/cell.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,15 @@ export class GridService {
 
   public CellArray : CellModel[][];
 
-  constructor() { }
+  constructor(private cellService : CellService) { }
+
+//   public Pause(){    
+//     for(let row of this.CellArray){
+//         for(let cell of row){
+//             this.cellService.Pause(cell);
+//         }
+//     }
+// }
 
   // InitCells(rows : number, columns : number){
 

@@ -20,10 +20,10 @@ TODO:
     Step 3. Delete all the services
 
     BUGS:
-        - A new game must set the mine counter the first time it's opened
-        - New Game button seems to be triggering pause
-        - DONE Can't click pause anymore
-        - Winning is not highlighting the bombs green
+        - Right now, I'm resetting EVERY time a component is registered in the gameStateManager, which means it's taking a long time when you go to expert
+            - this DID solve the issue of the initial counter being wrong until a new game was clicked.
+            - find a better way to know when all the components have been registered to call a new game.
+            - this is ALSO causing issues in the stats service
         - After the grid has been build, GetAdjacentCells should be called for all cells all at once and then not called again
         - Why the Grid.Pause also UNpause??
 

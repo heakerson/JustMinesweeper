@@ -63,10 +63,16 @@ export class CellComponent implements OnInit, IUpdateable {
   Reset():void {
     this.cellService.Reset(this.Model);
   };
-  Start():void {};
+  Start():void {
+    this.Model.IsPaused = false;
+  };
   Stop():void {};
-  Pause():void {};
-  Win():void {};
+  Pause():void {
+    this.Model.IsPaused = true;
+  };
+  Win():void {
+    this.cellService.Win(this.Model);
+  };
   Lose():void {};  
 
 }

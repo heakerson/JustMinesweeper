@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DifficultyType } from '../new-game/DifficultyType';
+import { DifficultyType, Difficulty } from '../new-game/DifficultyType';
 import { ActivatedRoute } from '@angular/router';
 import { BoardModel } from './BoardModel';
 import { StatsService } from '../Services/stats.service';
@@ -9,6 +9,7 @@ import { IUpdateable } from '../Interfaces/IUpdateable';
 import { CounterService } from '../counter/counter.service';
 import { TimerService } from '../timer/timer.service';
 import { CellService } from '../cell/cell.service';
+import { GridService } from '../grid/grid.service';
 
 @Component({
   selector: 'app-board',
@@ -30,14 +31,24 @@ export class BoardComponent implements OnInit, IUpdateable {
 
     this.route.paramMap.subscribe(params => {
       let difficulty : DifficultyType = <DifficultyType>params.get('difficulty');
-      this.Model = new BoardModel(difficulty, this.gameStateManager, this.timerService, this.cellService);
+      this.gameStateManager.Difficulty = new Difficulty(difficulty);
+      this.Model = new BoardModel(this.gameStateManager, this.timerService, this.cellService);
     });
+
+    document.addEventListener("contextmenu", function (e) {
+      e.preventDefault();
+    }, false);
 
     this.gameStateManager.RegisterUpdateable(this);
   }
 
-  TogglePause(){
-    this.Model.TogglePause();
+  public TogglePause(){
+    if(this.gameStateManager.GameStatus == GameStatus.Started){
+        this.gameStateManager.SetState(GameStatus.Paused);
+    }
+    else if(this.gameStateManager.GameStatus == GameStatus.Paused){
+        this.gameStateManager.SetState(GameStatus.Started);
+    }   
   }
 
   NewGame(){
@@ -51,11 +62,7 @@ export class BoardComponent implements OnInit, IUpdateable {
   };
   Stop():void {};
   Pause():void {};
-  Win():void {
-    //this.Model.Win();
-  };
-  Lose():void {
-    //this.Model.Lose();
-  };  
+  Win():void {};
+  Lose():void {};  
 
 }
