@@ -1,5 +1,6 @@
-import { TimerModel } from "../timer/TimerModel";
-import { DifficultyType } from "../new-game/DifficultyType";
+// import { TimerModel } from "../timer/TimerModel";
+import { DifficultyType } from "./DifficultyType";
+import { TimerService } from "./timer.service";
 
 export class StatKeeper{
 
@@ -10,7 +11,7 @@ export class StatKeeper{
     public SumWinTime : number = 0;
     public AverageWinTime : number = 0;
 
-    constructor(public difficulty : DifficultyType){
+    constructor(public difficulty : DifficultyType, private timerService : TimerService){
         this.InitStats();
     }
 
@@ -35,22 +36,26 @@ export class StatKeeper{
     }
 
 
-    public UpdateStats(timer : TimerModel, win : boolean){
-
-        this.Attempted++;
+    public UpdateStats(win : boolean){
         
         if(win){
             this.Won++;
-            this.SumWinTime+= timer.Time;
+            this.SumWinTime+= this.timerService.Time;
             this.AverageWinTime = this.SumWinTime/this.Won;
         }
 
-        if((timer.Time < this.BestTime || this.BestTime == 0) && win){
-            this.BestTime = timer.Time;
+        if((this.timerService.Time < this.BestTime || this.BestTime == 0) && win){
+            this.BestTime = this.timerService.Time;
         }
 
         this.PercentWon = this.Won/this.Attempted;
 
+        this.SaveStats();
+    }
+
+
+    public IncrementAttempted(){
+        this.Attempted++;
         this.SaveStats();
     }
 

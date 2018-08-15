@@ -1,11 +1,11 @@
 <div id="SmileyContainer" class="px-3 py-2"
-  [class.warning]="(Model.Board.GameStatus == 1 || Model.Board.GameStatus == 2 || Model.Board.GameStatus == 0) && 
-                  Model.Board.GetFlaggedCount() >= Model.Board.Difficulty.MineCount"
-  [class.danger]="Model.Board.GameStatus == 4"
-  [class.win]="Model.Board.GameStatus == 3"
-  [class.paused]="Model.Board.GameStatus == 5">
+  [class.warning]="(gameStateManager.GameStatus == 1 || gameStateManager.GameStatus == 2 || gameStateManager.GameStatus == 0) && 
+                  gameStateManager.GetFlaggedCount() >= gameStateManager.Difficulty.MineCount"
+  [class.danger]="gameStateManager.GameStatus == 4"
+  [class.win]="gameStateManager.GameStatus == 3"
+  [class.paused]="gameStateManager.GameStatus == 5">
 
-  <div [ngSwitch]="Model.Board.GameStatus">
+  <div [ngSwitch]="gameStateManager.GameStatus">
 
     <div *ngSwitchCase="3" class="d-flex flex-row align-items-center">
         <i class="fas fa-laugh-beam mr-2"></i>
@@ -30,12 +30,12 @@
 
     <div *ngSwitchDefault>
 
-      <div *ngIf="Model.Board.Grid.MouseDown; else start" class="d-flex flex-row align-items-center">
+      <div *ngIf="gameStateManager.MouseDown; else start" class="d-flex flex-row align-items-center">
           <i class="fas fa-grin-tongue-wink"></i>
       </div>
 
       <ng-template #start>
-          <div *ngIf="Model.Board.GameStatus == 0 && Model.Board.GetFlaggedCount() < Model.Board.Difficulty.MineCount; else playing" class="d-flex flex-row align-items-center">
+          <div *ngIf="gameStateManager.GameStatus == 0 && gameStateManager.GetFlaggedCount() < gameStateManager.Difficulty.MineCount; else playing" class="d-flex flex-row align-items-center">
               <i  class="fas fa-smile mr-2"></i>
               <div class="smiley-text">
                 <span>LET'S PLAY!</span>
@@ -44,7 +44,7 @@
       </ng-template>
 
       <ng-template #playing>
-          <div *ngIf="Model.Board.GetFlaggedCount() < Model.Board.Difficulty.MineCount; else awry" class="d-flex flex-row align-items-center">
+          <div *ngIf="gameStateManager.GetFlaggedCount() < gameStateManager.Difficulty.MineCount; else awry" class="d-flex flex-row align-items-center">
               <i  class="fas fa-smile mr-2"></i>
               <div class="smiley-text">
                 <span>KEEP GOING</span>

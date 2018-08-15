@@ -1,5 +1,6 @@
 TODO:
 ==========================
+- Smiley component could be updated to use IUpdatable and set explicit flags? Rather than looking at the gameState and a bunch of properties
 - Deploy!
 - Get some kind of traffic counter
 - Do I want the hollow smiley's instead?

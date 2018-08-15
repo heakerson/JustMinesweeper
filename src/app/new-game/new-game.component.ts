@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DifficultyType } from './DifficultyType';
+import { DifficultyType } from '../Services/DifficultyType';
 
 @Component({
   selector: 'app-new-game',
@@ -9,7 +9,6 @@ import { DifficultyType } from './DifficultyType';
 export class NewGameComponent implements OnInit {
 
   public Difficulty : DifficultyType = DifficultyType.Easy;
-  //public List : number[] = [1,2,3,4]
 
   constructor() { }
 
@@ -18,6 +17,5 @@ export class NewGameComponent implements OnInit {
 
   UpdateDifficulty(difficulty : DifficultyType){
     this.Difficulty = difficulty;
-    console.log(this.Difficulty);
   }
 }

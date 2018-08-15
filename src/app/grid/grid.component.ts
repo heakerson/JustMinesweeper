@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { GridModel } from './GridModel';
+import { IUpdateable } from '../Interfaces/IUpdateable';
+import { GameStateManager } from '../Services/game-state.service';
+import { GridService } from '../Services/grid.service';
 
 @Component({
   selector: 'app-grid',
@@ -8,11 +10,7 @@ import { GridModel } from './GridModel';
 })
 export class GridComponent implements OnInit {
 
-  @Input() Model : GridModel;
+  constructor(public gameStateManager : GameStateManager, private gridService : GridService) {}
 
-  constructor() {}
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

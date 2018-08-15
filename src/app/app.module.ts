@@ -10,8 +10,9 @@ import { CellComponent } from './cell/cell.component';
 import { CounterComponent } from './counter/counter.component';
 import { TimerComponent } from './timer/timer.component';
 import { StatsComponent } from './stats/stats.component';
-import { StatsService } from './stats.service';
+import { StatsService } from './Services/stats.service';
 import { SmileyComponent } from './smiley/smiley.component';
+import { GameStateManager } from './Services/game-state.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,10 @@ import { SmileyComponent } from './smiley/smiley.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [StatsService],
+  providers: [
+    StatsService, 
+    GameStateManager,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

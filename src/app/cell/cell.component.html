@@ -3,9 +3,9 @@
     [class.is-empty]="Model.Count == 0 && Model.IsSelected && !Model.IsMine"
     [class.is-flagged]="Model.IsFlagged"
     [class.is-revealed]="Model.IsRevealed"
-    [class.won]="Model.Grid.Board.GameStatus == 3 && Model.IsMine"
+    [class.won]="Model.Won && Model.IsMine"
     [class.paused]="Model.IsPaused"
-    class="cell-container bg-primary text-center" (contextmenu)="RightClickCell()" (click)="ClickCell()" (mousedown)="Model.MouseDown()" (mouseup)="Model.MouseUp()">
+    class="cell-container bg-primary text-center" (contextmenu)="RightClickCell()" (click)="ClickCell()" (mousedown)="MouseDown()" (mouseup)="MouseUp()">
 
     <span *ngIf="Model.IsSelected && !Model.IsMine; else icon">
       {{Model.Count}}

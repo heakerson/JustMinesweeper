@@ -3,6 +3,6 @@
     <div>
         TIME: 
     </div>
-    <span class="font-weight-bold ml-auto" [class.done]="Model.Board.GameStatus != 0 && Model.Board.GameStatus != 1">{{Model.Time}}</span>
+    <span class="font-weight-bold ml-auto" [class.done]="gameStateManager.GameStatus != 0 && gameStateManager.GameStatus != 1">{{timerService.Time}}</span>
   </div>
 </div>

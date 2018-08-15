@@ -1,8 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DifficultyType } from '../new-game/DifficultyType';
+import { DifficultyType, Difficulty } from '../Services/DifficultyType';
 import { ActivatedRoute } from '@angular/router';
-import { BoardModel } from './BoardModel';
-import { StatsService } from '../stats.service';
+import { GameStateManager } from '../Services/game-state.service';
+import { GameStatus } from '../Services/GameStatus';
+import { IUpdateable } from '../Interfaces/IUpdateable';
+import { GridService } from '../Services/grid.service';
+import { StatsService } from '../Services/stats.service';
 
 @Component({
   selector: 'app-board',
@@ -11,17 +14,43 @@ import { StatsService } from '../stats.service';
 })
 export class BoardComponent implements OnInit {
 
-  Model : BoardModel;
-
-  constructor(private route : ActivatedRoute, private Stats : StatsService) { }
+  constructor(
+    private route : ActivatedRoute, 
+    public gameStateManager : GameStateManager,
+    private gridService : GridService,
+    private statsService : StatsService
+  ) {}
 
   ngOnInit() {
 
     this.route.paramMap.subscribe(params => {
       let difficulty : DifficultyType = <DifficultyType>params.get('difficulty');
-      this.Model = new BoardModel(difficulty, this.Stats);
+      this.gameStateManager.Difficulty = new Difficulty(difficulty);
+      this.gridService.InitCells();
     });
-    
+
+    document.addEventListener("contextmenu", function (e) {
+      e.preventDefault();
+    }, false);
+
   }
 
+  public TogglePause(){
+    if(this.gameStateManager.GameStatus == GameStatus.Started){
+        this.gameStateManager.SetState(GameStatus.Paused);
+    }
+    else if(this.gameStateManager.GameStatus == GameStatus.Paused){
+        this.gameStateManager.SetState(GameStatus.Started);
+    }   
+  }
+
+  NewGame(){
+
+    if(!this.gameStateManager.StatsLogged){
+      this.gameStateManager.SetState(GameStatus.Stopped);
+      this.statsService.Update(false);
+    }
+
+    this.gameStateManager.SetState(GameStatus.Reset);
+  }
 }

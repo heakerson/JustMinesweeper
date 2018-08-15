@@ -4,13 +4,13 @@
         FLAGS LEFT: 
     </div>
     <div class="font-weight-bold ml-auto" 
-        [class.text-success]="Model.Count > 0 || (Model.Count == 0 && Model.Board.GameStatus == 3)" 
-        [class.text-danger]="Model.Count < 0 || (Model.Count == 0 && Model.Board.GameStatus != 3)">{{Model.Count}}</div>
+        [class.text-success]="counterService.Count > 0 || (counterService.Count == 0 && gameStateManager.GameStatus == 3)" 
+        [class.text-danger]="counterService.Count < 0 || (counterService.Count == 0 && gameStateManager.GameStatus != 3)">{{counterService.Count}}</div>
   </div>
   <div class="small-text d-flex flex-row">
     <div>
         TOTAL MINES: 
     </div>
-    <span class="font-weight-bold ml-auto">{{Model.Board.Difficulty.MineCount}}</span>
+    <span class="font-weight-bold ml-auto">{{gameStateManager.Difficulty.MineCount}}</span>
   </div>
 </div>
