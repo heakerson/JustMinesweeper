@@ -4,13 +4,14 @@ import { GameStateManager } from '../Services/game-state.service';
 import { GameStatus } from '../board/GameStatus';
 import { GridService } from '../grid/grid.service';
 import { CounterService } from '../counter/counter.service';
+import { StatsService } from '../Services/stats.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CellService {
 
-  constructor(private gameStateManager : GameStateManager, private counterService : CounterService, private gridService : GridService) { }
+  constructor(private gameStateManager : GameStateManager, private counterService : CounterService, private gridService : GridService, private statsService : StatsService) { }
 
   public ClickCell(model : CellModel){
 
@@ -19,6 +20,9 @@ export class CellService {
       model.IsSelected = true;
         
         if(this.gameStateManager.GameStatus == GameStatus.Reset){
+
+          this.statsService.IncrementAttempted();
+
           this.gridService.GenerateMines(model.Row, model.Column);
           this.gameStateManager.SetState(GameStatus.Started);
         }

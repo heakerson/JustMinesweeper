@@ -23,18 +23,18 @@ export class StatsComponent implements OnInit, IUpdateable {
   }
 
   Reset():void {
-    if(!this.gameStateManager.StatsLogged){
-      this.Stats.Update(this.timerService, false);
-    }
+    // if(!this.gameStateManager.StatsLogged){
+    //   this.Stats.Update(false);
+    // }
   };
   Start():void {};
   Stop():void {};
   Pause():void {};
   Win():void {
-    this.Stats.Update(this.timerService, true);
+    //this.Stats.Update(true);
   };
   Lose():void {
-    this.Stats.Update(this.timerService, false);
+    //this.Stats.Update(false);
   };  
 
 }

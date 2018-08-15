@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class TimerService {
 
   public Time : number = 0;
-  private Started : boolean = false;
+  public Started : boolean = false;
 
   constructor(){
       setInterval(() => { 
@@ -17,7 +17,7 @@ export class TimerService {
   }
 
   public Reset(){
-      this.Started = false;
+      this.Stop();
       this.Time = 0;
   }
 

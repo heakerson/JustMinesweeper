@@ -6,6 +6,7 @@ import { GameStateManager } from '../Services/game-state.service';
 import { GameStatus } from './GameStatus';
 import { IUpdateable } from '../Interfaces/IUpdateable';
 import { GridService } from '../grid/grid.service';
+import { StatsService } from '../Services/stats.service';
 
 @Component({
   selector: 'app-board',
@@ -19,7 +20,8 @@ export class BoardComponent implements OnInit, IUpdateable {
   constructor(
     private route : ActivatedRoute, 
     public gameStateManager : GameStateManager,
-    private gridService : GridService
+    private gridService : GridService,
+    private statsService : StatsService
   ) {}
 
   ngOnInit() {
@@ -47,6 +49,12 @@ export class BoardComponent implements OnInit, IUpdateable {
   }
 
   NewGame(){
+    
+    if(!this.gameStateManager.StatsLogged){
+      this.gameStateManager.SetState(GameStatus.Stopped);
+      this.statsService.Update(false);
+    }
+
     this.gameStateManager.SetState(GameStatus.Reset);
   }
 

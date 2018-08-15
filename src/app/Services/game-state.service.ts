@@ -15,7 +15,7 @@ export class GameStateManager implements IUpdateable {
   public FlaggedCells : CellModel[] = [];
   public MinesLocated : number = 0;
   private updateables : IUpdateable[] = [];
-  public StatsLogged : boolean = false;
+  public StatsLogged : boolean = true;
 
   constructor() {}
 

@@ -9,26 +9,40 @@ import { TimerService } from '../timer/timer.service';
 })
 export class StatsService {
 
-  public Beginner : StatKeeper = new StatKeeper(DifficultyType.Easy);
-  public Intermediate : StatKeeper = new StatKeeper(DifficultyType.Intermediate);
-  public Expert : StatKeeper = new StatKeeper(DifficultyType.Expert);
+  public Beginner : StatKeeper = new StatKeeper(DifficultyType.Easy, this.timerService);
+  public Intermediate : StatKeeper = new StatKeeper(DifficultyType.Intermediate, this.timerService);
+  public Expert : StatKeeper = new StatKeeper(DifficultyType.Expert, this.timerService);
 
-  constructor(private gameStateManager : GameStateManager){}
+  constructor(private gameStateManager : GameStateManager, private timerService : TimerService){}
 
-  public Update(timerService : TimerService, win : boolean){
+  public Update(win : boolean){
     switch(this.gameStateManager.Difficulty.Type){
         case DifficultyType.Easy:
-            this.Beginner.UpdateStats(timerService, win);
+            this.Beginner.UpdateStats(win);
             this.gameStateManager.StatsLogged = true;
             break;
         case DifficultyType.Intermediate:
-            this.Intermediate.UpdateStats(timerService, win);
+            this.Intermediate.UpdateStats(win);
             this.gameStateManager.StatsLogged = true;
             break;
         case DifficultyType.Expert:
-            this.Expert.UpdateStats(timerService, win);
+            this.Expert.UpdateStats(win);
             this.gameStateManager.StatsLogged = true;
             break;
     }
+  }
+
+  public IncrementAttempted(){
+    switch(this.gameStateManager.Difficulty.Type){
+      case DifficultyType.Easy:
+          this.Beginner.IncrementAttempted();
+          break;
+      case DifficultyType.Intermediate:
+          this.Intermediate.IncrementAttempted();
+          break;
+      case DifficultyType.Expert:
+          this.Expert.IncrementAttempted();
+          break;
+  }
   }
 }

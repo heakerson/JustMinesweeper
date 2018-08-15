@@ -11,7 +11,7 @@ export class StatKeeper{
     public SumWinTime : number = 0;
     public AverageWinTime : number = 0;
 
-    constructor(public difficulty : DifficultyType){
+    constructor(public difficulty : DifficultyType, private timerService : TimerService){
         this.InitStats();
     }
 
@@ -36,22 +36,26 @@ export class StatKeeper{
     }
 
 
-    public UpdateStats(timer : TimerService, win : boolean){
-
-        this.Attempted++;
+    public UpdateStats(win : boolean){
         
         if(win){
             this.Won++;
-            this.SumWinTime+= timer.Time;
+            this.SumWinTime+= this.timerService.Time;
             this.AverageWinTime = this.SumWinTime/this.Won;
         }
 
-        if((timer.Time < this.BestTime || this.BestTime == 0) && win){
-            this.BestTime = timer.Time;
+        if((this.timerService.Time < this.BestTime || this.BestTime == 0) && win){
+            this.BestTime = this.timerService.Time;
         }
 
         this.PercentWon = this.Won/this.Attempted;
 
+        this.SaveStats();
+    }
+
+
+    public IncrementAttempted(){
+        this.Attempted++;
         this.SaveStats();
     }
 
