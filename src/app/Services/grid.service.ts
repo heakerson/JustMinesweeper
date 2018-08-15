@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CellModel } from '../cell/CellModel';
-import { CellService } from '../cell/cell.service';
-import { GameStateManager } from '../Services/game-state.service';
+import { CellService } from './cell.service';
+import { GameStateManager } from './game-state.service';
 
 @Injectable({
   providedIn: 'root'

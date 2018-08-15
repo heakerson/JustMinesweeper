@@ -2,28 +2,33 @@
   <div class="flex-column rounded shadow bg-light p-5 my-5">
 
       <div class="d-flex flex-row">
-        <app-grid [Model]="Model.Grid"></app-grid>
+
+        <app-grid></app-grid>
+
         <div id="InfoBar" class="d-flex flex-column ml-4">
+
           <app-smiley></app-smiley>
           <app-timer></app-timer>
           <app-counter></app-counter>
+
           <div class="d-flex flex-row mt-2">
+
               <button (click)="NewGame()" class="btn btn-outline-primary">NEW GAME</button>
               <button (click)="TogglePause()" [disabled]="gameStateManager.GameStatus != 5 && gameStateManager.GameStatus !=1" class="btn btn-outline-primary ml-2 w-50">
             
-                  <div *ngIf="gameStateManager.GameStatus == 5; else pause" class="">
-                    <span>START</span>
-                    <i class="fas fa-play ml-2"></i>
+                <div *ngIf="gameStateManager.GameStatus == 5; else pause" class="">
+                  <span>START</span>
+                  <i class="fas fa-play ml-2"></i>
+                </div>
+    
+                <ng-template #pause>
+                  <div class="">
+                    <span>PAUSE</span>
+                    <i class="fas fa-pause ml-2"></i>
                   </div>
-      
-                  <ng-template #pause>
-                    <div class="">
-                      <span>PAUSE</span>
-                      <i class="fas fa-pause ml-2"></i>
-                    </div>
-                  </ng-template>
-      
-                </button>
+                </ng-template>
+    
+              </button>
           </div>
         </div>
       </div>   

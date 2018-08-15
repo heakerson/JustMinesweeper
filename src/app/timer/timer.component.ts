@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { GameStateManager } from '../Services/game-state.service';
 import { IUpdateable } from '../Interfaces/IUpdateable';
-import { TimerService } from './timer.service';
+import { TimerService } from '../Services/timer.service';
 import { StatsService } from '../Services/stats.service';
 
 @Component({
@@ -32,9 +32,6 @@ export class TimerComponent implements OnInit, IUpdateable {
   Win():void {
     this.Stop();
     this.statsService.Update(true);
-    if(!this.gameStateManager.StatsLogged){
-      
-    }
   };
   Lose():void {
     this.Stop();

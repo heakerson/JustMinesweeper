@@ -1,11 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DifficultyType, Difficulty } from '../new-game/DifficultyType';
+import { DifficultyType, Difficulty } from '../Services/DifficultyType';
 import { ActivatedRoute } from '@angular/router';
-import { BoardModel } from './BoardModel';
 import { GameStateManager } from '../Services/game-state.service';
-import { GameStatus } from './GameStatus';
+import { GameStatus } from '../Services/GameStatus';
 import { IUpdateable } from '../Interfaces/IUpdateable';
-import { GridService } from '../grid/grid.service';
+import { GridService } from '../Services/grid.service';
 import { StatsService } from '../Services/stats.service';
 
 @Component({
@@ -13,9 +12,7 @@ import { StatsService } from '../Services/stats.service';
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.css']
 })
-export class BoardComponent implements OnInit, IUpdateable {
-
-  Model : BoardModel;
+export class BoardComponent implements OnInit {
 
   constructor(
     private route : ActivatedRoute, 
@@ -29,14 +26,13 @@ export class BoardComponent implements OnInit, IUpdateable {
     this.route.paramMap.subscribe(params => {
       let difficulty : DifficultyType = <DifficultyType>params.get('difficulty');
       this.gameStateManager.Difficulty = new Difficulty(difficulty);
-      this.Model = new BoardModel(this.gameStateManager, this.gridService);
+      this.gridService.InitCells();
     });
 
     document.addEventListener("contextmenu", function (e) {
       e.preventDefault();
     }, false);
 
-    this.gameStateManager.RegisterUpdateable(this);
   }
 
   public TogglePause(){
@@ -49,7 +45,7 @@ export class BoardComponent implements OnInit, IUpdateable {
   }
 
   NewGame(){
-    
+
     if(!this.gameStateManager.StatsLogged){
       this.gameStateManager.SetState(GameStatus.Stopped);
       this.statsService.Update(false);
@@ -57,12 +53,4 @@ export class BoardComponent implements OnInit, IUpdateable {
 
     this.gameStateManager.SetState(GameStatus.Reset);
   }
-
-  Reset():void {};
-  Start():void {};
-  Stop():void {};
-  Pause():void {};
-  Win():void {};
-  Lose():void {};  
-
 }

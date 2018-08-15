@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DifficultyType } from './DifficultyType';
+import { DifficultyType } from '../Services/DifficultyType';
 
 @Component({
   selector: 'app-new-game',

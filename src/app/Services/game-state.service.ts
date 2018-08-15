@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { GameStatus } from '../board/GameStatus';
+import { GameStatus } from './GameStatus';
 import { IUpdateable } from '../Interfaces/IUpdateable';
-import { Difficulty, DifficultyType } from '../new-game/DifficultyType';
+import { Difficulty, DifficultyType } from './DifficultyType';
 import { CellModel } from '../cell/CellModel';
 
 @Injectable({
@@ -31,7 +31,6 @@ export class GameStateManager implements IUpdateable {
   public SetState(status : GameStatus){
     this.GameStatus = status;
     this.InvokeStateChange(this, status);
-      //console.log("SetState: " + status.toString());
     this.updateables.forEach(updateable => this.InvokeStateChange(updateable, status));
   }
 

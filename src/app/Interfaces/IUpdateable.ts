@@ -1,4 +1,4 @@
-import { GameStatus } from "../board/GameStatus";
+import { GameStatus } from "../Services/GameStatus";
 import { GameStateManager } from "../Services/game-state.service";
 
 export interface IUpdateable {

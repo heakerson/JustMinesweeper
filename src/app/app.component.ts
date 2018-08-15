@@ -2,7 +2,7 @@ import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { BoardComponent } from './board/board.component';
 import { StatsService } from './Services/stats.service';
 import { GameStateManager } from './Services/game-state.service';
-import { GameStatus } from './board/GameStatus';
+import { GameStatus } from './Services/GameStatus';
 
 @Component({
   selector: 'app-root',

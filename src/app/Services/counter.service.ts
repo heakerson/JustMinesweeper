@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CellModel } from '../cell/CellModel';
-import { GameStateManager } from '../Services/game-state.service';
-import { GameStatus } from '../board/GameStatus';
+import { GameStateManager } from './game-state.service';
+import { GameStatus } from './GameStatus';
 
 @Injectable({
   providedIn: 'root'
@@ -51,7 +51,6 @@ export class CounterService {
       }
 
       if(this.gameStateManager.MinesLocated == this.gameStateManager.Difficulty.MineCount && this.gameStateManager.GetFlaggedCount() == this.gameStateManager.Difficulty.MineCount){
-        console.log("WIN")
         this.gameStateManager.SetState(GameStatus.Win);
       }
   }

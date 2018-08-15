@@ -1,8 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-// import { SmileyModel } from './SmillyModel';
 import { IUpdateable } from '../Interfaces/IUpdateable';
 import { GameStateManager } from '../Services/game-state.service';
-import { GameStatus } from '../board/GameStatus';
 
 @Component({
   selector: 'app-smiley',
