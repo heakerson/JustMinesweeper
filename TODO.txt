@@ -1,6 +1,5 @@
 TODO:
 ==========================
-- i think I have components that don't need to implement IUpdateable now
 - Smiley component could be updated to use IUpdatable and set explicit flags? Rather than looking at the gameState and a bunch of properties
 - Deploy!
 - Get some kind of traffic counter
