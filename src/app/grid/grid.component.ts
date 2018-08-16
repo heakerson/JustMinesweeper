@@ -8,9 +8,22 @@ import { GridService } from '../Services/grid.service';
   templateUrl: './grid.component.html',
   styleUrls: ['./grid.component.css']
 })
-export class GridComponent implements OnInit {
+export class GridComponent implements OnInit, IUpdateable{
 
   constructor(public gameStateManager : GameStateManager, private gridService : GridService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.gameStateManager.RegisterUpdateable(this);
+  }
+
+  Reset():void {
+    this.gridService.FlaggedCells = [];
+    this.gridService.MinesLocated = 0;
+  };
+  Start():void {};
+  Stop():void {};
+  Pause():void {};
+  Win():void {};
+  Lose():void {};  
+  Warning():void {}
 }

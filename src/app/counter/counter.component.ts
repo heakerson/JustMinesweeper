@@ -26,4 +26,5 @@ export class CounterComponent implements OnInit, IUpdateable {
   Pause():void {};
   Win():void {};
   Lose():void {};  
+  Warning():void {}
 }

@@ -9,4 +9,5 @@ export interface IUpdateable {
     Pause():void;
     Win():void;
     Lose():void;
+    Warning():void;
 }

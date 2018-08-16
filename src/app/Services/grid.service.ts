@@ -11,33 +11,10 @@ export class GridService {
   public CellArray : CellModel[][];
   public MineCells : CellModel[];
   public MineCount : number = 0;
+  public FlaggedCells : CellModel[] = [];
+  public MinesLocated : number = 0;
 
   constructor(private gameStateManager : GameStateManager) { }
-
-//   public Pause(){    
-//     for(let row of this.CellArray){
-//         for(let cell of row){
-//             this.cellService.Pause(cell);
-//         }
-//     }
-// }
-
-  // InitCells(rows : number, columns : number){
-
-  //   this.CellArray = [];
-
-  //   for(let i = 0; i < rows; i++){
-
-  //       let row : CellModel[] = [];
-
-  //       for(let j = 0; j < columns; j++){
-  //           let cell : CellModel = new CellModel(this, i, j, this.gameStateManager, this.cellService);
-  //           row.push(cell);
-  //       }
-
-  //       this.CellArray.push(row);
-  //   }
-  // }
 
   InitCells(){
     let rows : number = this.gameStateManager.Difficulty.Rows;
@@ -92,18 +69,15 @@ private IsValidMineLocation(rowIndex: number, columnIndex : number, avoidRow : n
     return true;
 }
 
-  // public RevealMines(){
-
-  //   for(let cell of this.MineCells){
-  //       this.cellService.RevealMineStatus(cell);
-  //   }
-
-  //   for(let cell of this.gameStateManager.FlaggedCells){
-  //       if(!cell.IsMine){
-  //           this.cellService.RevealMineStatus(cell);
-  //       }
-  //   }
-  // }
+public GetFlaggedCount() : number{
+    let count : number = 0;
+    for(let flag of this.FlaggedCells){
+        if(flag.IsFlagged){
+            count++;
+        }
+    }
+    return count;
+  }
 
   public GetCell(rowIndex: number, columnIndex : number) : CellModel{
     let row = this.CellArray[rowIndex];

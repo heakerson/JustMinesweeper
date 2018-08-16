@@ -14,6 +14,8 @@ import { StatsService } from '../Services/stats.service';
 })
 export class BoardComponent implements OnInit {
 
+  private PreviousGameState : GameStatus = GameStatus.Reset;
+
   constructor(
     private route : ActivatedRoute, 
     public gameStateManager : GameStateManager,
@@ -36,11 +38,12 @@ export class BoardComponent implements OnInit {
   }
 
   public TogglePause(){
-    if(this.gameStateManager.GameStatus == GameStatus.Started){
+    if(this.gameStateManager.GameStatus == GameStatus.Started || this.gameStateManager.GameStatus == GameStatus.Warning){
+        this.PreviousGameState = this.gameStateManager.GameStatus;
         this.gameStateManager.SetState(GameStatus.Paused);
     }
     else if(this.gameStateManager.GameStatus == GameStatus.Paused){
-        this.gameStateManager.SetState(GameStatus.Started);
+        this.gameStateManager.SetState(this.PreviousGameState);
     }   
   }
 
