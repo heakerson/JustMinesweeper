@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { CellModel } from '../cell/CellModel';
 import { GameStateManager } from './game-state.service';
 import { GameStatus } from './GameStatus';
+import { GridService } from './grid.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class CounterService {
   public Count : number = 0;
   public Flags : number = 0;
 
-  constructor(private gameStateManager : GameStateManager){}
+  constructor(private gameStateManager : GameStateManager, private gridService : GridService){}
 
   public Reset(initCount : number){
       this.Count = initCount;
@@ -30,11 +31,11 @@ export class CounterService {
       if(cell.IsFlagged){
 
           if(!this.IsInFlaggedList(cell)){
-              this.gameStateManager.FlaggedCells.push(cell);
+              this.gridService.FlaggedCells.push(cell);
           }
 
           if(cell.IsMine){
-              this.gameStateManager.MinesLocated++;
+              this.gridService.MinesLocated++;
           }
 
           this.Decrement();
@@ -43,21 +44,42 @@ export class CounterService {
       else{
 
           if(cell.IsMine){
-              this.gameStateManager.MinesLocated--;
+              this.gridService.MinesLocated--;
           }
 
           this.Incrememnt();
           this.Flags++;
       }
 
-      if(this.gameStateManager.MinesLocated == this.gameStateManager.Difficulty.MineCount && this.gameStateManager.GetFlaggedCount() == this.gameStateManager.Difficulty.MineCount){
+      if(this.IsWinState()){
         this.gameStateManager.SetState(GameStatus.Win);
       }
+      else if(this.IsWarningState()){
+        this.gameStateManager.SetState(GameStatus.Warning);
+      }
+      else if(this.CanRemoveWarningState()){
+        this.gameStateManager.SetState(GameStatus.Started);
+      }
+  }
+
+  private IsWinState() : boolean{
+    return this.gridService.MinesLocated == this.gameStateManager.Difficulty.MineCount && 
+            this.gridService.GetFlaggedCount() == this.gameStateManager.Difficulty.MineCount;
+  }
+
+  private IsWarningState() : boolean{
+    return this.gridService.GetFlaggedCount() >= this.gameStateManager.Difficulty.MineCount &&
+            this.gameStateManager.GameStatus != GameStatus.Warning;
+  }
+
+  private CanRemoveWarningState() : boolean {
+    return this.gridService.GetFlaggedCount() < this.gameStateManager.Difficulty.MineCount &&
+        this.gameStateManager.GameStatus == GameStatus.Warning;
   }
 
   public IsInFlaggedList(cell : CellModel) : boolean{
 
-      for(let aCell of this.gameStateManager.FlaggedCells){
+      for(let aCell of this.gridService.FlaggedCells){
           if(aCell.Id == cell.Id){
               return true;
           }

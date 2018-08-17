@@ -77,6 +77,9 @@ export class CellComponent implements OnInit, IUpdateable {
   };
   Lose():void {
     this.cellService.RevealMineStatus(this.Model);
-  };  
+  };
+  Warning():void {
+    this.Model.IsPaused = false;
+  }
 
 }

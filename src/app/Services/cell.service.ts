@@ -5,13 +5,14 @@ import { GameStatus } from './GameStatus';
 import { GridService } from './grid.service';
 import { CounterService } from './counter.service';
 import { StatsService } from './stats.service';
+import { SmileyService } from './smiley.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CellService {
 
-  constructor(private gameStateManager : GameStateManager, private counterService : CounterService, private gridService : GridService, private statsService : StatsService) { }
+  constructor(private gameStateManager : GameStateManager, private counterService : CounterService, private gridService : GridService, private statsService : StatsService, private smileyService : SmileyService) { }
 
   public ClickCell(model : CellModel){
 
@@ -64,22 +65,28 @@ export class CellService {
   public IsClickable(model : CellModel) : boolean{
     return !model.IsSelected && 
             !model.IsFlagged &&
-            (this.gameStateManager.GameStatus == GameStatus.Reset || this.gameStateManager.GameStatus == GameStatus.Started)
+            (this.gameStateManager.GameStatus == GameStatus.Reset || 
+              this.gameStateManager.GameStatus == GameStatus.Started ||
+              this.gameStateManager.GameStatus == GameStatus.Warning)
   }
 
   public IsRightClickable(model : CellModel) : boolean{
     return !model.IsSelected && 
-            (this.gameStateManager.GameStatus == GameStatus.Reset || this.gameStateManager.GameStatus == GameStatus.Started)
+            (this.gameStateManager.GameStatus == GameStatus.Reset || 
+              this.gameStateManager.GameStatus == GameStatus.Started ||
+              this.gameStateManager.GameStatus == GameStatus.Warning)
   }
 
   public MouseDown(model : CellModel){
     if(this.IsClickable(model) || this.IsRightClickable(model)){
-        this.gameStateManager.MouseDown = true;
+      this.smileyService.MouseDown();
     }
   }
 
   public MouseUp(model : CellModel){
-      this.gameStateManager.MouseDown = false;
+    if(this.IsClickable(model)){
+      this.smileyService.MouseUp();
+    }
   }
 
   public GetAdjacentCells(model : CellModel) : CellModel[]{

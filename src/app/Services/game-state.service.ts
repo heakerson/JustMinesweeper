@@ -11,9 +11,6 @@ export class GameStateManager implements IUpdateable {
 
   public GameStatus : GameStatus = GameStatus.Reset;
   public Difficulty : Difficulty = new Difficulty(DifficultyType.Easy);
-  public MouseDown : boolean = false;
-  public FlaggedCells : CellModel[] = [];
-  public MinesLocated : number = 0;
   private updateables : IUpdateable[] = [];
   public StatsLogged : boolean = true;
 
@@ -54,6 +51,9 @@ export class GameStateManager implements IUpdateable {
       case GameStatus.Lose:
         updateable.Lose();
         break;
+      case GameStatus.Warning:
+        updateable.Warning();
+        break;
     }
   }
 
@@ -63,25 +63,14 @@ export class GameStateManager implements IUpdateable {
   }
 
   Reset():void {
-    this.FlaggedCells = [];
     this.GameStatus = GameStatus.Reset;
-    this.MinesLocated = 0;
     this.StatsLogged = false;
   };
   Start():void {};
   Stop():void {};
   Pause():void {};
   Win():void {};
-  Lose():void {};  
-
-  public GetFlaggedCount() : number{
-    let count : number = 0;
-    for(let flag of this.FlaggedCells){
-        if(flag.IsFlagged){
-            count++;
-        }
-    }
-    return count;
-  }
+  Lose():void {};
+  Warning():void {}
 
 }

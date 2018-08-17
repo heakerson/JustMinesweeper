@@ -36,6 +36,7 @@ export class TimerComponent implements OnInit, IUpdateable {
   Lose():void {
     this.Stop();
     this.statsService.Update(false);
-  };  
+  };
+  Warning():void {}
 
 }
