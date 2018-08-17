@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IUpdateable } from '../Interfaces/IUpdateable';
-import { GameStateManager } from '../Services/game-state.service';
-import { SmileyService } from '../Services/smiley.service';
+import { IUpdateable } from '../../Interfaces/IUpdateable';
+import { GameStateManager } from '../../Services/Game State Service/game-state.service';
+import { SmileyService } from '../../Services/Smiley Service/smiley.service';
 import { SmileyModel, SmileyIcon } from './SmileyModel';
 
 @Component({

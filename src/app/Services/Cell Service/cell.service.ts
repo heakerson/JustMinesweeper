@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { CellModel } from '../cell/CellModel';
-import { GameStateManager } from './game-state.service';
-import { GameStatus } from './GameStatus';
-import { GridService } from './grid.service';
-import { CounterService } from './counter.service';
-import { StatsService } from './stats.service';
-import { SmileyService } from './smiley.service';
+import { CellModel } from '../../Components/cell/CellModel';
+import { GameStateManager } from '../Game State Service/game-state.service';
+import { GameStatus } from '../Game State Service/GameStatus';
+import { GridService } from '../Grid Service/grid.service';
+import { CounterService } from '../Counter Service/counter.service';
+import { StatsService } from '../Stats Service/stats.service';
+import { SmileyService } from '../Smiley Service/smiley.service';
 
 @Injectable({
   providedIn: 'root'

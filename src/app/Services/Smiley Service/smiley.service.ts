@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import { SmileyModel, SmileyIcon } from '../smiley/SmileyModel';
+import { SmileyModel, SmileyIcon } from '../../Components/smiley/SmileyModel';
 
 @Injectable({
   providedIn: 'root'

@@ -18,7 +18,7 @@ export class TimerService {
 
   public Reset(){
       this.Stop();
-      this.Time = 0;
+      this.Time = 0; 
   }
 
   public Start(){

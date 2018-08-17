@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { GameStatus } from './GameStatus';
-import { IUpdateable } from '../Interfaces/IUpdateable';
+import { IUpdateable } from '../../Interfaces/IUpdateable';
 import { Difficulty, DifficultyType } from './DifficultyType';
-import { CellModel } from '../cell/CellModel';
 
 @Injectable({
   providedIn: 'root'

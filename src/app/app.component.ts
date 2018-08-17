@@ -1,8 +1,8 @@
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
-import { BoardComponent } from './board/board.component';
-import { StatsService } from './Services/stats.service';
-import { GameStateManager } from './Services/game-state.service';
-import { GameStatus } from './Services/GameStatus';
+import { BoardComponent } from './Components/board/board.component';
+import { StatsService } from './Services/Stats Service/stats.service';
+import { GameStateManager } from './Services/Game State Service/game-state.service';
+import { GameStatus } from './Services/Game State Service/GameStatus';
 
 @Component({
   selector: 'app-root',

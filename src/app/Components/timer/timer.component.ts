@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { GameStateManager } from '../Services/game-state.service';
-import { IUpdateable } from '../Interfaces/IUpdateable';
-import { TimerService } from '../Services/timer.service';
-import { StatsService } from '../Services/stats.service';
+import { GameStateManager } from '../../Services/Game State Service/game-state.service';
+import { IUpdateable } from '../../Interfaces/IUpdateable';
+import { TimerService } from '../../Services/Timer Service/timer.service';
+import { StatsService } from '../../Services/Stats Service/stats.service';
 
 @Component({
   selector: 'app-timer',

@@ -1,9 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-// import { CounterModel } from './CounterModel';
-import { IUpdateable } from '../Interfaces/IUpdateable';
-import { GameStatus } from '../Services/GameStatus';
-import { GameStateManager } from '../Services/game-state.service';
-import { CounterService } from '../Services/counter.service';
+import { IUpdateable } from '../../Interfaces/IUpdateable';
+import { GameStateManager } from '../../Services/Game State Service/game-state.service';
+import { CounterService } from '../../Services/Counter Service/counter.service';
 
 @Component({
   selector: 'app-counter',

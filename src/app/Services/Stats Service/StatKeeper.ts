@@ -1,6 +1,6 @@
 // import { TimerModel } from "../timer/TimerModel";
-import { DifficultyType } from "./DifficultyType";
-import { TimerService } from "./timer.service";
+import { DifficultyType } from "../Game State Service/DifficultyType";
+import { TimerService } from "../Timer Service/timer.service";
 
 export class StatKeeper{
 

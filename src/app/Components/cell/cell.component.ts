@@ -1,10 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CellModel } from './CellModel';
-import { GameStatus } from '../Services/GameStatus';
-import { IUpdateable } from '../Interfaces/IUpdateable';
-import { GameStateManager } from '../Services/game-state.service';
-import { CellService } from '../Services/cell.service';
-import { GridService } from '../Services/grid.service';
+import { IUpdateable } from '../../Interfaces/IUpdateable';
+import { GameStateManager } from '../../Services/Game State Service/game-state.service';
+import { CellService } from '../../Services/Cell Service/cell.service';
+import { GridService } from '../../Services/Grid Service/grid.service';
 
 @Component({
   selector: 'app-cell',

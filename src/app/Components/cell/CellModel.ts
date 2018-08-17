@@ -1,8 +1,3 @@
-import { GameStatus } from "../Services/GameStatus";
-import { GameStateManager } from "../Services/game-state.service";
-import { CellService } from "../Services/cell.service";
-import { GridService } from "../Services/grid.service";
-
 export class CellModel{
 
     private static IdIndex : number = 0;

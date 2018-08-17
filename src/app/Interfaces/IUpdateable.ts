@@ -1,5 +1,5 @@
-import { GameStatus } from "../Services/GameStatus";
-import { GameStateManager } from "../Services/game-state.service";
+import { GameStatus } from "../Services/Game State Service/GameStatus";
+import { GameStateManager } from "../Services/Game State Service/game-state.service";
 
 export interface IUpdateable {
 

@@ -1,11 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DifficultyType, Difficulty } from '../Services/DifficultyType';
+import { DifficultyType, Difficulty } from '../../Services/Game State Service/DifficultyType';
 import { ActivatedRoute } from '@angular/router';
-import { GameStateManager } from '../Services/game-state.service';
-import { GameStatus } from '../Services/GameStatus';
-import { IUpdateable } from '../Interfaces/IUpdateable';
-import { GridService } from '../Services/grid.service';
-import { StatsService } from '../Services/stats.service';
+import { GameStateManager } from '../../Services/Game State Service/game-state.service';
+import { GameStatus } from '../../Services/Game State Service/GameStatus';
+import { GridService } from '../../Services/Grid Service/grid.service';
+import { StatsService } from '../../Services/Stats Service/stats.service';
 
 @Component({
   selector: 'app-board',
