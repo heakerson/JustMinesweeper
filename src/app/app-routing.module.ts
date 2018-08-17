@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { NewGameComponent } from './new-game/new-game.component';
-import { BoardComponent } from './board/board.component';
+import { NewGameComponent } from './Components/new-game/new-game.component';
+import { BoardComponent } from './Components/board/board.component';
 
 const routes: Routes = [
   { path: 'New', component: NewGameComponent },
