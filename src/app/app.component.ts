@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { BoardComponent } from './Components/board/board.component';
 import { StatsService } from './Services/Stats Service/stats.service';
 import { GameStateManager } from './Services/Game State Service/game-state.service';
@@ -32,7 +32,7 @@ export class AppComponent{
       }
       else if(this.gameStateManager.GameStatus == GameStatus.Paused){
           this.gameStateManager.SetState(GameStatus.Started);
-      }  
+      }
     }
   }
 
