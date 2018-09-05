@@ -10,7 +10,7 @@ import { CounterService } from '../../Services/Counter Service/counter.service';
 })
 export class CounterComponent implements OnInit, IUpdateable {
 
-  constructor(private gameStateManager : GameStateManager, private counterService : CounterService) { }
+  constructor(public gameStateManager : GameStateManager, public counterService : CounterService) { }
 
   ngOnInit() {
     this.gameStateManager.RegisterUpdateable(this);

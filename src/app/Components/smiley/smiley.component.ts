@@ -14,7 +14,7 @@ export class SmileyComponent implements OnInit, IUpdateable {
   public Smiley : SmileyModel = new SmileyModel(SmileyIcon.Smile, "LET'S PLAY");
   private testClasses = 'text-success font-weight-bold';
 
-  constructor(private gameStateManager : GameStateManager, private smileyService : SmileyService) { }
+  constructor(public gameStateManager : GameStateManager, private smileyService : SmileyService) { }
 
   ngOnInit() {
     this.smileyService.RegisterSmileyModel(this.Smiley);

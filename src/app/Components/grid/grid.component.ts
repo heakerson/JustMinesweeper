@@ -10,7 +10,7 @@ import { GridService } from '../../Services/Grid Service/grid.service';
 })
 export class GridComponent implements OnInit, IUpdateable{
 
-  constructor(public gameStateManager : GameStateManager, private gridService : GridService) {}
+  constructor(public gameStateManager : GameStateManager, public gridService : GridService) {}
 
   ngOnInit() {
     this.gameStateManager.RegisterUpdateable(this);

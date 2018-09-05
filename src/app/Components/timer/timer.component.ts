@@ -11,7 +11,7 @@ import { StatsService } from '../../Services/Stats Service/stats.service';
 })
 export class TimerComponent implements OnInit, IUpdateable {
 
-  constructor(public gameStateManager : GameStateManager, private timerService : TimerService, private statsService : StatsService) { }
+  constructor(public gameStateManager : GameStateManager, public timerService : TimerService, private statsService : StatsService) { }
 
   ngOnInit() {
     this.gameStateManager.RegisterUpdateable(this);

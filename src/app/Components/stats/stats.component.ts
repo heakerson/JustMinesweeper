@@ -8,7 +8,7 @@ import { StatsService } from '../../Services/Stats Service/stats.service';
 })
 export class StatsComponent implements OnInit { 
 
-  constructor(private Stats : StatsService) { }
+  constructor(public Stats : StatsService) { }
 
   ngOnInit() {}
 
