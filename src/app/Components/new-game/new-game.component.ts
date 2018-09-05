@@ -9,6 +9,9 @@ import { DifficultyType } from '../../Services/Game State Service/DifficultyType
 export class NewGameComponent implements OnInit {
 
   public Difficulty : DifficultyType = DifficultyType.Easy;
+  public Easy : DifficultyType = DifficultyType.Easy;
+  public Intermediate : DifficultyType = DifficultyType.Intermediate;
+  public Expert : DifficultyType = DifficultyType.Expert;
 
   constructor() { }
 

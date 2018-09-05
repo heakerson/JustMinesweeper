@@ -5,13 +5,13 @@
         <div class="d-flex flex-row justify-content-center">
             <div class="d-flex flex-row shadow rounded bg-light p-4">
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                    <label class="btn btn-primary active" (click)="UpdateDifficulty('Easy')">
+                    <label class="btn btn-primary active" (click)="UpdateDifficulty(Easy)">
                         <input type="radio" name="options" id="option1" autocomplete="off" [checked]="Difficulty == 'Easy'"> Easy
                     </label>
-                    <label class="btn btn-primary" (click)="UpdateDifficulty('Intermediate')">
+                    <label class="btn btn-primary" (click)="UpdateDifficulty(Intermediate)">
                         <input type="radio" name="options" id="option2" autocomplete="off" [checked]="Difficulty == 'Intermediate'"> Intermediate
                     </label>
-                    <label class="btn btn-primary" (click)="UpdateDifficulty('Expert')">
+                    <label class="btn btn-primary" (click)="UpdateDifficulty(Expert)">
                         <input type="radio" name="options" id="option3" autocomplete="off" [checked]="Difficulty == 'Expert'"> Expert
                     </label>
                 </div>
