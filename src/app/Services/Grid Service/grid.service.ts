@@ -86,14 +86,14 @@ public GetFlaggedCount() : number{
   }
 
   public IsValidCellLocation(rowIndex: number, columnIndex: number) : boolean{
-        
+
     if(rowIndex < 0 || columnIndex < 0){
         return false;
     }
     else if(rowIndex > (this.gameStateManager.Difficulty.Rows-1)){
         return false;
     }
-    else if(columnIndex > (this.gameStateManager.Difficulty.Rows-1)){
+    else if(columnIndex > (this.gameStateManager.Difficulty.Columns-1)){
         return false;
     }
 

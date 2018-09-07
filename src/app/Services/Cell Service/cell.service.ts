@@ -29,7 +29,7 @@ export class CellService {
         }
 
         model.Count = this.GetAdjacentMineCount(model);
-        
+
         if(model.IsMine){
           this.gameStateManager.SetState(GameStatus.Lose);
         }
@@ -91,7 +91,7 @@ export class CellService {
 
   public GetAdjacentCells(model : CellModel) : CellModel[]{
     model.AdjacentCells = [];
-    
+
     for(let location of model.AdjancentCellLocations){
         let cell : CellModel = this.gridService.GetCell(location[0], location[1]);
         model.AdjacentCells.push(cell);
